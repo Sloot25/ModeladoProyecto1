@@ -4,6 +4,7 @@ public class CatalogoItem extends CatalogoComponente{
   String nombre; 
   int codigo; 
   int precio; 
+  int descuento;
   String departamento;
   String descripcion;
   public CatalogoItem(String nombre, int codigo, int precio, String departamento, String descripcion){
@@ -29,7 +30,10 @@ public class CatalogoItem extends CatalogoComponente{
     return "Nombre: " + this.nombre + '\n' +
     "Departamento: " + this.departamento + '\n' + 
     "Codigo de Barra: " + this.codigo + '\n' + 
-    "Precio: " + this.precio + '\n' + 
+    "Precio: " + (this.precio - (this.precio*this.descuento)/100) + '\n' + 
     "Descripcion: " + this.descripcion;
+  }
+  public void aplicarDescuento(int descuento){
+    this.descuento = descuento;
   }
 }

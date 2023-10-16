@@ -13,7 +13,7 @@ public abstract class CatalogoComponente{
   public String getNombre(){
     throw new UnSupportedOperationException();
   }
-  public String getDEscription(){
+  public String getDescription(){
     throw new UnSupportedOperationException();
   }
   public void add(CatalogoComponente componente){
@@ -26,6 +26,9 @@ public abstract class CatalogoComponente{
     throw new UnSupportedOperationException();
   }
   public String toString(){
+    throw new UnSupportedOperationException();
+  }
+  public void aplicarDescuento(int descuento){
     throw new UnSupportedOperationException();
   }
 }

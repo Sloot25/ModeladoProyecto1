@@ -6,7 +6,7 @@ public class Usuario implements User {
   String descuento;
   String contrasenia; 
   String telefono; 
-  String direccion; 
+  int direccion; 
   int cuenta; 
   int dinero;
   String pais; 
@@ -67,7 +67,7 @@ public class Usuario implements User {
   public void actualizarDinero(int dinero){
     this.dinero = dinero;
   }
-  public void actualizarDescuento(String descuento){
+  public void actualizarDescuento(int descuento){
     this.descuento = descuento;
   }
 }

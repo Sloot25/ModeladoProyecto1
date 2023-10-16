@@ -42,5 +42,7 @@ public class Departamento extends CatalogoComponente{
       res+= " " + cat.toString();
     return res;
   }
+  public void aplicarDescuento(int descuento){
+  }
   
 }
