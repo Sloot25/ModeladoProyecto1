@@ -1,25 +1,27 @@
-package State; 
+public class IniciarSesion {
+  CheemsMark chemsito; 
 
-public class Catalogo implements EstadoMark{
-  CheemsMark chemsito;
-  MenuDepartamental menu;
-  public Catalogo(CheemsMark chemsito){
+  public IniciarSesion(CheemsMark chemsito){
     this.chemsito = chemsito;
-  }  
-  public void inicializarEstado(){
-    System.out.println(chemsito.getUsuario().getIdioma().verCatalogo());
-    System.out.println(menu.catalogo());
   }
+  public void inicializarEstado(){
+    System.out.println(chemsito.getUsuario().getIdioma().saludoInicio());
+    System.out.print(chemsito.getUsuario().getIdioma().descuento());
+    System.out.println(" " + chemsito.getUsuario().getDescuento());
+  }
+
   public void verCatalogo(){
-    System.out.println(chemsito.getUsuario().getIdioma().repeticionCatalogo());
+    chemsito.setEstado(chemsito.getEstadoVerCatalogo());
+    chemsito.incializarEstado(); 
   }
   public void comprar(){
     chemsito.setEstado(chemsito.getEstadoComprar());
     chemsito.inicializarEstado();
   }
   public void cerrarSesion(){
-    chemsito.setEstado(chemsito.getEstadoIniciar());
+    chemsito.setEstado(chemsito.getEstadoIniciar()); 
     System.out.println(chemsito.getUsuario().getIdioma().cerrarSesion());
+    chemsito.inicializarEstado();
   }
   public void IniciarSesion(){
     System.out.println(chemsito.getUsuario().getIdioma().sesionIniciada());
