@@ -1,4 +1,6 @@
-package State; 
+package State;
+
+import Composite.MenuDepartamental;
 
 public class Catalogo implements EstadoMark{
   CheemsMark chemsito;

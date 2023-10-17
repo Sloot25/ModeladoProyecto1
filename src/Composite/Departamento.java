@@ -1,8 +1,9 @@
-import java.util.ArrayList;
-
 package Composite; 
 
+import java.util.ArrayList;
+
 public class Departamento extends CatalogoComponente{
+  int codigo;
   String nombre;
   String departamento;
   String descripcion; 
@@ -23,7 +24,7 @@ public class Departamento extends CatalogoComponente{
     return this.descripcion;
   }
   public void add(CatalogoComponente catalogo){
-    if(!catalogo.getDepartamento.equals(this.departamento))
+    if(!catalogo.getDepartamento().equals(this.departamento))
       throw new UnsupportedOperationException();
     items.add(catalogo);
   }

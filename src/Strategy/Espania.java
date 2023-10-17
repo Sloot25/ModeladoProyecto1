@@ -20,7 +20,7 @@ public class Espania implements Idioma{
     return "Hasta luego Chavalin, esssspero vuestro regreso para pillar nuestras cosillas";
   }
 
-  public String completaCompra(){
+  public String completarCompra(){
     return "Le agradezzzco por su compra, si algun dia quiere pillar otras cosillas le agradeceria que pillara las nuestras";
   }
 }

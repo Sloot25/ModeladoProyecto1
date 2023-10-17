@@ -1,6 +1,6 @@
-import java.util.ArrayList;
-
 package Observer; 
+
+import java.util.ArrayList;
 
 public class DescuentoLatam implements RegionDescuento{
   ArrayList<Observer> lista; 
@@ -23,6 +23,6 @@ public class DescuentoLatam implements RegionDescuento{
 
   public void notifyObserver(){
     for(Observer observer : lista)
-      observer.notifyObserver(this.descuento);
+      observer.actualizarDescuento(this.descuento);
   }
 }

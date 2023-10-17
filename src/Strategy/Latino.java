@@ -23,7 +23,7 @@ public class Latino implements Idioma{
     return "Adios wey, que te lleve diosito";
   }
 
-  public String completaCompra(){
+  public String completarCompra(){
     return "Gracias por tu compra wey, no tenemos garantia en articulos salidos de la tienda";
   }
 }

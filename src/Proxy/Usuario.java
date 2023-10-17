@@ -1,12 +1,21 @@
-package Usuario; 
+package Proxy;
+
+import Observer.DescuentoEU;
+import Observer.DescuentoEspania;
+import Observer.DescuentoLatam;
+import Observer.RegionDescuento;
+import Strategy.Espania;
+import Strategy.Idioma;
+import Strategy.Ingles;
+import Strategy.Latino;
 
 public class Usuario implements User {
   String nombre; 
   RegionDescuento regionDescuento; 
-  String descuento;
+  int descuento;
   String contrasenia; 
   String telefono; 
-  int direccion; 
+  String direccion; 
   int cuenta; 
   int dinero;
   String pais; 
@@ -33,7 +42,7 @@ public class Usuario implements User {
         this.idioma = new Espania();
         this.regionDescuento = new DescuentoEspania();
         break;
-      case "Estados Unidos"
+      case "Estados Unidos":
         this.idioma = new Ingles();
         this.regionDescuento = new DescuentoEU();
       default:
@@ -51,8 +60,10 @@ public class Usuario implements User {
   public boolean validarUsuario(String contrasenia){
     return contrasenia.equals(this.contrasenia);
   }
-  public String getTelefono(){ return this.telefono; }
-  public String getDescuento(){
+  public String getTelefono(){ 
+    return this.telefono;
+  }
+  public int getDescuento(){
     return this.descuento;
   }
   public void actualizarDatos(String nombre, String pais, String direccion){

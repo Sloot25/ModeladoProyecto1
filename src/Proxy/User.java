@@ -1,4 +1,6 @@
-package Proxy; 
+package Proxy;
+
+import Strategy.Idioma;
 
 public interface User {
   public String getNombre();
@@ -9,7 +11,7 @@ public interface User {
   public boolean validarUsuario(String contrasenia);
   public Idioma getIdioma();
   public String getTelefono();
-  public String getDescuento();
+  public int getDescuento();
   public void actualizarDatos(String nombre, String pais, String direccion);
   public void actualizarContrasenia(String contrasenia);
   public void actualizarDinero(int dinero);

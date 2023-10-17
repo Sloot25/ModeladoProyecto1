@@ -1,6 +1,6 @@
-import java.util.ArrayList; 
-
 package Observer; 
+
+import java.util.ArrayList; 
 
 public class DescuentoEU implements RegionDescuento{
   ArrayList<Observer> lista; 

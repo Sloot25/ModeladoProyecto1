@@ -1,6 +1,6 @@
 package Strategy; 
 
-public public class Ingles implements Idioma{
+public class Ingles implements Idioma{
   public Ingles(){}
 
   public String ofertas(){
@@ -18,7 +18,7 @@ public public class Ingles implements Idioma{
   public String despedirse(){
     return "Good bye my dear friend, come back late.";
   }
-  public String completaCompra(){
+  public String completarCompra(){
     return "Thank you for your buy";
   }
 }

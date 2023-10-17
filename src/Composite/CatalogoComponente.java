@@ -2,33 +2,33 @@ package Composite;
 
 public abstract class CatalogoComponente{
   public String getDepartamento(){
-    throw new UnSupportedOperationException();
+    throw new UnsupportedOperationException();
   }
   public int getCodigo(){
-    throw new UnSupportedOperationException();
+    throw new UnsupportedOperationException();
   }
   public int getPrecio(){
-    throw new UnSupportedOperationException();
+    throw new UnsupportedOperationException();
   }
   public String getNombre(){
-    throw new UnSupportedOperationException();
+    throw new UnsupportedOperationException();
   }
   public String getDescription(){
-    throw new UnSupportedOperationException();
+    throw new UnsupportedOperationException();
   }
   public void add(CatalogoComponente componente){
-    throw new UnSupportedOperationException();
+    throw new UnsupportedOperationException();
   } 
   public void remove(CatalogoComponente componente){
-    throw new UnSupportedOperationException();
+    throw new UnsupportedOperationException();
   }
   public CatalogoComponente getChild(int i){
-    throw new UnSupportedOperationException();
+    throw new UnsupportedOperationException();
   }
   public String toString(){
-    throw new UnSupportedOperationException();
+    throw new UnsupportedOperationException();
   }
   public void aplicarDescuento(int descuento){
-    throw new UnSupportedOperationException();
+    throw new UnsupportedOperationException();
   }
 }

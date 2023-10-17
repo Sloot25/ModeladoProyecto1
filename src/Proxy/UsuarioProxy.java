@@ -1,4 +1,9 @@
-package Proxy; 
+package Proxy;
+
+import Strategy.Espania;
+import Strategy.Idioma;
+import Strategy.Ingles;
+import Strategy.Latino;
 
 public class UsuarioProxy implements User{
   String nombre; 
@@ -20,16 +25,15 @@ public class UsuarioProxy implements User{
     this.pais = usuario.getPais();
   }
   public String getNombre(){
-    this.nombre; 
+    return this.nombre; 
   }
   public String getPais(){ return this.pais; }
   public String getDireccion(){ return this.direccion; }
-  public boolean validarCuenta(int cuenta){ return usuario.validarCuenta(cuenta); }
-  public Idioma getIdioma(){
-    return this.idioma;
-  }
+  public boolean validarCuenta(int cuenta){ return user.validarCuenta(cuenta); }
+  public Idioma getIdioma(){    return this.idioma;  }
   public String getTelefono(){ return this.telefono; }
-  public String getDescuento(){ return usuario.getDescuento(); }
+  public int getDescuento(){ return user.getDescuento(); }
+  public int getDinero(){ return this.dinero; }
   public void actualizarDatos(String nombre, String pais, String direccion){
     this.nombre = nombre; 
     this.pais = pais;
@@ -50,18 +54,22 @@ public class UsuarioProxy implements User{
     }
   }
   public void actualizarDatosReal(){
-    usuario.actualizarDatos(this.nombre, this.pais, this.direccion);
+    user.actualizarDatos(this.nombre, this.pais, this.direccion);
   }
   public void actualizarContrasenia(String contrasenia){
     this.contrasenia = contrasenia; 
   }
   public void actualizarContraseniaReal(){
-    usuario.actualizarContrasenia(this.contrasenia);
+    user.actualizarContrasenia(this.contrasenia);
   }
   public void actualizarDinero(int dinero){
     this.dinero = dinero; 
   }
   public void actualizarDineroReal(){
-    usuario.actualizarDinero(this.dinero);
+    user.actualizarDinero(this.dinero);
+  }
+  @Override
+  public boolean validarUsuario(String contrasenia) {
+    return contrasenia.equals(this.contrasenia);
   }
 }
