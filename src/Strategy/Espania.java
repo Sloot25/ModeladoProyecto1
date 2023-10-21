@@ -4,7 +4,7 @@ public class Espania implements Idioma{
   public Espania(){}
 
   public String ofertas(){
-    return "Venga Tio, Os traigo estos offertones: ";
+    return "Pero madre mia Willy, estos ofertones estan que flipas chaval: ";
   }
   public String opciones(){
     return "Venga Tio, Te muestro vuestras opciones en el catalogo: ";
