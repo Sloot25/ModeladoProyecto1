@@ -4,13 +4,13 @@ public class Ingles implements Idioma{
   public Ingles(){}
 
   public String ofertas(){
-    return "Those are the offers actually";
+    return "Check out our best deals and discounts";
   }
   public String opciones(){
     return "These are some options in catalogue";
   }
   public String entrega(){
-    return "Those are your items";
+    return "These are the items on your list";
   }
   public String saludar(){
     String result = "";
@@ -19,7 +19,7 @@ public class Ingles implements Idioma{
             + "*       Purchase system       *"
             + "*                             *"
             + "*******************************\n";
-    result +="Hello, welcome to Cheems store, where you can buy anything and everything:\n";
+    result +="Hello, welcome to the Cheems store, where you can buy anything at an affordable price:\n";
     result += "1. See catalog.\n"
             + "2. Make a purchase.\n"
             + "3. Sign off.\n" 
@@ -27,9 +27,9 @@ public class Ingles implements Idioma{
     return result;
   }
   public String despedirse(){
-    return "Good bye my dear friend, come back late.";
+    return "Goodbye my dear friend, come back later.";
   }
   public String completarCompra(){
-    return "Thank you for your buy";
+    return "Thank you for your preference";
   }
 }

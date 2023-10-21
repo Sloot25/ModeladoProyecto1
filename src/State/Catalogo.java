@@ -10,7 +10,7 @@ public class Catalogo implements EstadoMark{
   }  
   public void inicializarEstado(){
     System.out.println(chemsito.getUsuario().getIdioma().verCatalogo());
-    System.out.println(menu.catalogo());
+    System.out.println(menu.getMenu());
   }
   public void verCatalogo(){
     System.out.println(chemsito.getUsuario().getIdioma().repeticionCatalogo());
@@ -23,7 +23,7 @@ public class Catalogo implements EstadoMark{
     chemsito.setEstado(chemsito.getEstadoIniciar());
     System.out.println(chemsito.getUsuario().getIdioma().cerrarSesion());
   }
-  public void IniciarSesion(){
+  public void iniciarSesion(){
     System.out.println(chemsito.getUsuario().getIdioma().sesionIniciada());
   }
   public void salir(){

@@ -21,6 +21,9 @@ public class CheemsMark {
   public EstadoMark getEstadoSalir(){ return this.salir; }
   public EstadoMark getEstadoCerrarSesion(){ return this.cerrarSesion; }
   public EstadoMark getEstadoComprar(){ return this.comprar; }
+  public EstadoMark getEstadoCompraSegura(){ return this.compraSegura; }
+  public EstadoMark getEstadoIniciar(){ return this.iniciar; }
+  public EstadoMark getEstadoIniciarSesion(){ return this.iniciarSesion; }
   public void setEstado(EstadoMark estado){ this.estadoActual = estado; }
   public void inicializarEstado(){ this.estadoActual.inicializarEstado(); }
 */

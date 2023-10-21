@@ -43,5 +43,6 @@ public class CatalogoItem extends CatalogoComponente{
   }
   public void aplicarDescuento(int descuento){
     this.descuento = descuento;
+    this.precio = (int)precio*(100-descuento)/100;
   }
 }

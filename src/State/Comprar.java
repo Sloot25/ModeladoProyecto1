@@ -1,6 +1,8 @@
-import java.util.Scanner;
-
 package State;
+
+import java.util.Scanner;
+import Composite.MenuDepartamental;
+
 
 public class Comprar implements EstadoMark{
   CheemsMark chemsito;
@@ -11,13 +13,13 @@ public class Comprar implements EstadoMark{
   public void inicializarEstado(){
     Scanner in = new Scanner(System.in);
     System.out.println(chemsito.getUsuario().getIdioma().bienvenidaCompra());
-    System.out.println(menu.catalogo());
+    System.out.println(menu.getMenu());
     int precio = 0;
     while(precio ==  0){
       try{
         String numeroItem = in.nextLine();
         int numero = Integer.parseInt(numeroItem);
-        precio = menu.getItem(numero);
+        precio = menu.getChild(numero).getPrecio();
       }catch (NumberFormatException ex){
         System.err.println("Ese no es un numero");
       }catch(CodigoIncorrectoException e){
@@ -28,7 +30,7 @@ public class Comprar implements EstadoMark{
     System.out.println(chemsito.getUsuario().getIdioma().continuarCompra());
     while(true){
       try{
-      String tmp = in.textLine(); 
+      String tmp = in.nextLine(); 
       int opcion = Integer.parseInt(tmp);
       if(opcion == 1)
         chemsito.setEstado(chemsito.getEstadoCompraSegura());

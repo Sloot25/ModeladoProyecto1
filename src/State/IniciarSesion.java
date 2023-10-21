@@ -1,3 +1,4 @@
+package State;
 import java.util.Scanner;
 import Composite.CatalogoComponente;
 import Composite.MenuDepartamental;
@@ -23,16 +24,16 @@ public class IniciarSesion implements EstadoMark{
     }
     switch(opcion){
       case 1:
-        chemsito.verCatalogo();
+        chemsito.setEstado(chemsito.getEstadoVerCatalogo());
         break;
       case 2:
-        chemsito.comprar();
+        chemsito.setEstado(chemsito.getEstadoComprar());
         break;
       case 3:
-        chemsito.cerrarSesion();
+        chemsito.setEstado(chemsito.getEstadoCerrarSesion());
         break;
       case 4:
-        chemsito.salir();
+        chemsito.setEstado(chemsito.getEstadoSalir());;
         break;
       default:
         System.out.println("Error. Debe ingresar una opcion valida.");
@@ -52,7 +53,7 @@ public class IniciarSesion implements EstadoMark{
     chemsito.setEstado(chemsito.getEstadoIniciar()); 
     chemsito.inicializarEstado();
   }
-  public void IniciarSesion(){
+  public void iniciarSesion(){
     throw new UnsupportedOperationException();
   }
   public void salir(){
