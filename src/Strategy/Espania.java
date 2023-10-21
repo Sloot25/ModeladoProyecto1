@@ -13,7 +13,18 @@ public class Espania implements Idioma{
     return "Ostiones, estos son los artilugios que has pillado: ";
   }
   public String saludar(){
-    return "Buenos dias Chavalin, que artilugio desea uste': ";
+    String result = "";
+    result += "*******************************"
+            + "*                             *"
+            + "*      Sistema de compras     *"
+            + "*                             *"
+            + "*******************************\n";
+    result +="Buenos dias Chavalin, que opcion desea uste': \n";
+    result += "1. Ver catalogo de la ostia.\n"
+            + "2. Realizar compra tio.\n"
+            + "3. Cerrar sesión tio. \n"
+            + "4. Salir."; 
+    return result;
   }
 
   public String despedirse(){

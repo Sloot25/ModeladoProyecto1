@@ -1,12 +1,12 @@
 package Composite; 
 
 public class CatalogoItem extends CatalogoComponente{
-  String nombre; 
-  int codigo; 
-  int precio; 
-  int descuento;
-  String departamento;
-  String descripcion;
+  private String nombre; 
+  private int codigo; 
+  private int precio; 
+  private int descuento;
+  private String departamento;
+  private String descripcion;
   public CatalogoItem(String nombre, int codigo, int precio, String departamento, String descripcion){
     this.nombre = nombre; 
     this.codigo = codigo;
@@ -14,6 +14,10 @@ public class CatalogoItem extends CatalogoComponente{
     this.departamento = departamento;
     this.descripcion = descripcion;
   } 
+  
+  public String getNombre(){
+    return this.nombre;
+  }
   public String getDepartamento(){
     return this.departamento;
   }
@@ -26,12 +30,16 @@ public class CatalogoItem extends CatalogoComponente{
   public String getDescripcion(){
     return this.descripcion;
   }
+  public int getDescuento(){
+    return this.descuento;
+  }
+
   public String toString(){
-    return "Nombre: " + this.nombre + '\n' +
-    "Departamento: " + this.departamento + '\n' + 
-    "Codigo de Barra: " + this.codigo + '\n' + 
-    "Precio: " + (this.precio - (this.precio*this.descuento)/100) + '\n' + 
-    "Descripcion: " + this.descripcion;
+    return "Nombre: " + getNombre() + '\n' +
+    "Departamento: " + getDepartamento() + '\n' + 
+    "Codigo de Barra: " + getCodigo() + '\n' + 
+    "Precio: " + (getPrecio() - (getPrecio()*getDescuento())/100) + '\n' + 
+    "Descripcion: " + getDescripcion();
   }
   public void aplicarDescuento(int descuento){
     this.descuento = descuento;

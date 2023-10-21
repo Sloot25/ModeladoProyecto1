@@ -1,31 +1,27 @@
 package Composite; 
-
 import java.util.ArrayList;
 
 public class Departamento extends CatalogoComponente{
-  int codigo;
-  String nombre;
-  String departamento;
-  String descripcion; 
-  ArrayList<CatalogoComponente> items; 
+  private String nombre;
+  private String descripcion; 
+  private ArrayList<CatalogoComponente> items = new ArrayList<CatalogoComponente>();
 
-  public Departamento(String nombre ,String departamento, String descripcion){
-    this.departamento = departamento;
+
+  public Departamento(String nombre, String descripcion){
+    this.nombre = nombre;
     this.descripcion = descripcion; 
-    this.items = new ArrayList<CatalogoComponente>();
   }
-  public String getDepartamento(){
-    return this.departamento; 
-  }
-  public int getCodigo(){
-    return this.codigo;
+   
+  public String getNombre(){
+    return this.nombre;
   }
   public String getDescripcion(){
     return this.descripcion;
   }
+
   public void add(CatalogoComponente catalogo){
-    if(!catalogo.getDepartamento().equals(this.departamento))
-      throw new UnsupportedOperationException();
+    if(!catalogo.getDepartamento().equals(this.nombre)){
+      throw new UnsupportedOperationException();}
     items.add(catalogo);
   }
   public void remove(CatalogoComponente catalogo){
@@ -35,15 +31,15 @@ public class Departamento extends CatalogoComponente{
     return items.get(i);
   }
   public String toString(){
-    String res = "Nombre: " + this.nombre + '\n' +
-    "Departamento: " + this.departamento + '\n' + 
-    "Codigo: " + this.codigo + '\n' + 
-    "Descripcion: " + this.descripcion + '\n';
+    String res = "Nombre: " + getNombre() + '\n' +
+    "Descripcion: " + getDescripcion() + '\n';
     for(CatalogoComponente cat : items)
       res+= " " + cat.toString();
     return res;
   }
   public void aplicarDescuento(int descuento){
+    for(CatalogoComponente cat : items){
+      cat.aplicarDescuento(descuento);
+    } 
   }
-  
 }

@@ -13,7 +13,18 @@ public class Ingles implements Idioma{
     return "Those are your items";
   }
   public String saludar(){
-    return "Hello, welcome to Cheems store, where you can buy anything and everything";
+    String result = "";
+    result += "*******************************"
+            + "*                             *"
+            + "*       Purchase system       *"
+            + "*                             *"
+            + "*******************************\n";
+    result +="Hello, welcome to Cheems store, where you can buy anything and everything:\n";
+    result += "1. See catalog.\n"
+            + "2. Make a purchase.\n"
+            + "3. Sign off.\n" 
+            + "4. Exit."; 
+    return result;
   }
   public String despedirse(){
     return "Good bye my dear friend, come back late.";

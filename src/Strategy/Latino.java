@@ -16,7 +16,18 @@ public class Latino implements Idioma{
   }
 
   public String saludar(){
-    return "Hola wey, eres bienvenido en este changarro, hoy no fiamos, maniana si: ";
+    String result = "";
+    result += "*******************************"
+            + "*                             *"
+            + "*      Sistema de compras     *"
+            + "*                             *"
+            + "*******************************\n";
+    result +="Hola wey, eres bienvenido en este changarro.\nRecuerda hoy no fiamos, maniana si:\n";
+    result += "1. Ver catalogo.\n"
+            + "2. Realizar compra.\n"
+            + "3. Cerrar sesión.\n" 
+            + "4. Salir."; 
+    return result;
   }
 
   public String despedirse(){
