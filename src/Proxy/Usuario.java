@@ -4,6 +4,7 @@ import Observer.DescuentoEU;
 import Observer.DescuentoEspania;
 import Observer.DescuentoLatam;
 import Observer.RegionDescuento;
+import State.CheemsMark;
 import Strategy.Espania;
 import Strategy.Idioma;
 import Strategy.Ingles;
@@ -20,9 +21,10 @@ public class Usuario implements User {
   int dinero;
   String pais; 
   Idioma idioma;
+  CheemsMark chemsito;
 
 
-  public Usuario(String nombre, String contrasenia, String telefono, String direccion, String pais, int dinero, int cuenta){
+  public Usuario(String nombre, String contrasenia, String telefono, String direccion, String pais, int dinero, int cuenta, CheemsMark chemsito){
     this.nombre = nombre; 
     this.contrasenia = contrasenia; 
     this.telefono = telefono;
@@ -30,21 +32,22 @@ public class Usuario implements User {
     this.pais = pais;
     this.cuenta = cuenta; 
     this.dinero = dinero;
+    this.chemsito = chemsito;
     cambiarIdioma(pais);
   }
   private void cambiarIdioma(String pais){
     switch (pais) {
       case "Mexico":
         this.idioma = new Latino();
-        this.regionDescuento = new DescuentoLatam();
+        this.regionDescuento = new DescuentoLatam(chemsito);
         break;
       case "Espania":
         this.idioma = new Espania();
-        this.regionDescuento = new DescuentoEspania();
+        this.regionDescuento = new DescuentoEspania(chemsito);
         break;
       case "Estados Unidos":
         this.idioma = new Ingles();
-        this.regionDescuento = new DescuentoEU();
+        this.regionDescuento = new DescuentoEU(chemsito);
       default:
         break;
     }
@@ -80,5 +83,6 @@ public class Usuario implements User {
   }
   public void actualizarDescuento(int descuento){
     this.descuento = descuento;
+    System.out.println(getIdioma().ofertas());
   }
 }

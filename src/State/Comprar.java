@@ -57,7 +57,7 @@ public class Comprar implements EstadoMark{
         int numeroItem = Integer.parseInt(tmp);
         if(numeroItem == 1)
           return;
-        this.carrido.add(menu.getChild(numero));
+        this.carrito.add(menu.getChild(numero));
       }catch(NumberFormatException e){
         System.err.println(chemsito.getUsuario().getIdioma().noEsNumero());
       }catch(CodigoIncorrectoException e){

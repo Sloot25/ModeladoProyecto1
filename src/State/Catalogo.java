@@ -9,7 +9,7 @@ public class Catalogo implements EstadoMark{
     this.chemsito = chemsito;
   }  
   public void inicializarEstado(){
-    System.out.println(chemsito.getUsuario().getIdioma().verCatalogo());
+    System.out.println(chemsito.getUsuario().getIdioma().opciones());
     System.out.println(menu.getMenu());
   }
   public void verCatalogo(){

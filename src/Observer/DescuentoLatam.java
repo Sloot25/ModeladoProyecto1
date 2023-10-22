@@ -2,11 +2,16 @@ package Observer;
 
 import java.util.ArrayList;
 
-public class DescuentoLatam implements RegionDescuento{
+import Composite.MenuDepartamental;
+import State.CheemsMark;
+
+public class DescuentoLatam extends RegionDescuento{
   ArrayList<Observer> lista; 
   int descuento;
-  public DescuentoLatam(){
+  MenuDepartamental menu;
+  public DescuentoLatam(CheemsMark cheemsMark){
     lista = new ArrayList<Observer>();
+    menu = new MenuDepartamental(cheemsMark);
   }
 
   public void registerObserver(Observer observer){
@@ -24,5 +29,8 @@ public class DescuentoLatam implements RegionDescuento{
   public void notifyObserver(){
     for(Observer observer : lista)
       observer.actualizarDescuento(this.descuento);
+  }
+  public String getProductos(){
+    return menu.getDepartamentoAlimentos().toString();
   }
 }
