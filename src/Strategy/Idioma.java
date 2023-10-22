@@ -1,6 +1,8 @@
 package Strategy;
 
-public interface Idioma{
+import java.io.Serializable;
+
+public interface Idioma extends Serializable{
   public String ofertas();
   public String opciones();
   public String entrega();
