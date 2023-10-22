@@ -14,22 +14,6 @@ public class DescuentoLatam extends RegionDescuento{
     menu = new MenuDepartamental(cheemsMark);
   }
 
-  public void registerObserver(Observer observer){
-    lista.add(observer);
-  }
-
-  public void removeObserver(Observer observer){
-    lista.remove(observer);
-  }
-
-  public void actualizarDescuento(int numero){
-    this.descuento = numero;
-  }
-
-  public void notifyObserver(){
-    for(Observer observer : lista)
-      observer.actualizarDescuento(this.descuento);
-  }
   public String getProductos(){
     return menu.getDepartamentoAlimentos().toString();
   }

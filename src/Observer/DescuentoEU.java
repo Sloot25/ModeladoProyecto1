@@ -12,19 +12,7 @@ public class DescuentoEU extends RegionDescuento{
     this.lista = new ArrayList<Observer>();
     menu = new MenuDepartamental(cheemsMark);
   }
-  public void registerObserver(Observer observer){
-    this.lista.add(observer); 
-  }
-  public void removeObserver(Observer observer){
-     this.lista.remove(observer);  
-  }
-  public void notifyObserver(){
-    for(Observer observer : lista)
-      observer.actualizarDescuento(this.descuento);
-  }
-  public void actualizarDescuento(int descuento){
-    this.descuento = descuento;
-  }
+
   public String getProductos(){
     return menu.getDepartamentoElectronica().toString();
   }

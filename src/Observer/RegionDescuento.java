@@ -20,5 +20,8 @@ public abstract class RegionDescuento{
   public void notifyObserver(){
     for(Observer observer : lista)
       observer.actualizarDescuento(this.descuento);
+    System.out.println(getProductos());
   }
+
+  public abstract String getProductos();
 }
