@@ -82,7 +82,7 @@ public class Espania implements Idioma{
 
   @Override
   public String codigoIncorrecto() {
-    return "No fastidies tio, ese codigo es incorrecto";
+    return "Pero que haceis tio, ese codigo es incorrecto";
   }
 
   @Override
