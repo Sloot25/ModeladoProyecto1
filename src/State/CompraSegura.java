@@ -1,5 +1,5 @@
 package State; 
-
+import java.util.Scanner;
 public class CompraSegura implements EstadoMark{
   CheemsMark chemsito; 
   int precio;

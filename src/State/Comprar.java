@@ -1,7 +1,9 @@
 package State;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 import Composite.MenuDepartamental;
+import Composite.CatalogoComponente;
 
 
 public class Comprar implements EstadoMark{

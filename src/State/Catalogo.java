@@ -1,12 +1,14 @@
 package State;
 
 import Composite.MenuDepartamental;
+import java.util.Scanner;
 
 public class Catalogo implements EstadoMark{
   CheemsMark chemsito;
   MenuDepartamental menu;
   public Catalogo(CheemsMark chemsito){
     this.chemsito = chemsito;
+    menu = new MenuDepartamental(chemsito.getUsuario());
   }  
   public void inicializarEstado(){
     System.out.println(chemsito.getUsuario().getIdioma().verCatalogo());

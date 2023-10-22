@@ -1,22 +1,33 @@
 package Composite; 
+import Proxy.User;
 import State.CheemsMark;
 
 public class MenuDepartamental {
-    CheemsMark cheemsito;
-    CatalogoComponente todosLosDepartamentos = new Departamento("Departamentos", "Todos los departamentos");
+    User usuario;
+    CatalogoComponente catalogo;
     
-    public MenuDepartamental(CheemsMark cheemsito){
-      this.cheemsito = cheemsito;
+    public MenuDepartamental(User usuario){
+      this.usuario = usuario;
       generarDepartamentos();
     }
 
     public String getMenu(){
-      todosLosDepartamentos.aplicarDescuento(cheemsito.getUsuario().getDescuento());
-      return todosLosDepartamentos.toString();
+      switch (usuario.getPais()) {
+        case "Mexico":
+          catalogo.getChild(2).aplicarDescuento(usuario.getDescuento());
+          break;
+        case "Espania":
+          catalogo.getChild(0).aplicarDescuento(usuario.getDescuento());
+          break; 
+        case "Estados Unidos":
+          catalogo.getChild(1).aplicarDescuento(usuario.getDescuento());
+          break;
+      }
+      return catalogo.toString();
     }
 
     public CatalogoComponente getChild(int i){
-      return todosLosDepartamentos.getChild(i);
+      return catalogo.getChild(i);
     }
     
     public void generarDepartamentos(){
@@ -27,11 +38,6 @@ public class MenuDepartamental {
       CatalogoComponente departamentoRopa = new Departamento("Ropa", "Todos los productos de ropa y accesorios");
       CatalogoComponente departamentoMascotas = new Departamento("Mascotas", "Todos los productos que tu bendicion necesita");
     
-      todosLosDepartamentos.add(departamentoElectrodomesticos);
-      todosLosDepartamentos.add(departamentoElectronica);
-      todosLosDepartamentos.add(departamentoAlimentos);
-      todosLosDepartamentos.add(departamentoRopa);
-      todosLosDepartamentos.add(departamentoMascotas);
 
       // Agregando los productos
       departamentoElectrodomesticos.add(new CatalogoItem("Lavadora Whirpeel", 
@@ -136,6 +142,11 @@ public class MenuDepartamental {
                                             departamentoRopa.getNombre(),
                                             "Chaqueta ligera de diseño clasico."));
 
+      catalogo.add(departamentoElectrodomesticos);
+      catalogo.add(departamentoElectronica);
+      catalogo.add(departamentoAlimentos);
+      catalogo.add(departamentoRopa);
+      catalogo.add(departamentoMascotas);
                     
     }
 }

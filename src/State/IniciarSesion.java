@@ -1,11 +1,9 @@
 package State;
 import java.util.Scanner;
 import Composite.CatalogoComponente;
-import Composite.MenuDepartamental;
 
 public class IniciarSesion implements EstadoMark{
   CheemsMark chemsito;
-  MenuDepartamental catalogo = new MenuDepartamental(chemsito); 
 
   public IniciarSesion(CheemsMark chemsito){
     this.chemsito = chemsito;
@@ -24,16 +22,16 @@ public class IniciarSesion implements EstadoMark{
     }
     switch(opcion){
       case 1:
-          verCatalogo()
+        verCatalogo();
         break;
       case 2:
-          comprar();
+        comprar();
         break;
       case 3:
         cerrarSesion();
         break;
       case 4:
-          salir();
+        salir();
         break;
       default:
         System.out.println(chemsito.getUsuario().getIdioma().escogeOpcion());
