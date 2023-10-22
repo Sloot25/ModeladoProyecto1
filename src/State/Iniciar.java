@@ -28,22 +28,23 @@ public class Iniciar implements EstadoMark{
     throw new UnsupportedOperationException();
   }
   public void IniciarSesion(){
-    Scanner in = new Scanner(System.in);
-    System.out.println("****************************************");
-    System.out.println("*                                      *");
-    System.out.println("*        Bienvenido a CheemsMark       *");
-    System.out.println("*                                      *");
-    System.out.println("****************************************\n");
-    System.out.println("Por favor, ingrese su usuario: ");
-    String nombre = in.nextLine();
-    System.out.println("Por favor, ingrese su contraseña: ");
-    String contrasenia = in.nextLine();
-    if(map.get(nombre).validarUsuario(contrasenia)){
-      chemsito.setEstado(chemsito.getEstadoIniciarSesion());
-      chemsito.inicializarEstado();
-    }
-    else{ 
-      System.err.println("Tu usuario y/o contrasenia es incorrecta");
+    try (Scanner in = new Scanner(System.in)) {
+      System.out.println("****************************************");
+      System.out.println("*                                      *");
+      System.out.println("*        Bienvenido a CheemsMark       *");
+      System.out.println("*                                      *");
+      System.out.println("****************************************\n");
+      System.out.println("Por favor, ingrese su usuario: ");
+      String nombre = in.nextLine();
+      System.out.println("Por favor, ingrese su contraseña: ");
+      String contrasenia = in.nextLine();
+      if(map.get(nombre).validarUsuario(contrasenia)){
+        chemsito.setEstado(chemsito.getEstadoIniciarSesion());
+        chemsito.inicializarEstado();
+      }
+      else{ 
+        System.err.println("Tu usuario y/o contrasenia es incorrecta");
+      }
     }
   }
   public void salir(){

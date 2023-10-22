@@ -1,6 +1,5 @@
 package State;
 import java.util.Scanner;
-import Composite.CatalogoComponente;
 import Composite.MenuDepartamental;
 
 public class IniciarSesion implements EstadoMark{
@@ -12,31 +11,32 @@ public class IniciarSesion implements EstadoMark{
   }
   public void inicializarEstado(){
     System.out.println(chemsito.getUsuario().getIdioma().saludar());
-    Scanner in = new Scanner(System.in);
-    while(true){
-    String opcionUsuario = in.nextLine();
-    int opcion; 
-    try {
-        opcion = Integer.parseInt(opcionUsuario);
-    } catch (NumberFormatException e) {
-      System.out.println(chemsito.getUsuario().getIdioma().noEsNumero());
-        continue;
-    }
-    switch(opcion){
-      case 1:
-          verCatalogo()
-        break;
-      case 2:
-          comprar();
-        break;
-      case 3:
-        cerrarSesion();
-        break;
-      case 4:
-          salir();
-        break;
-      default:
-        System.out.println(chemsito.getUsuario().getIdioma().escogeOpcion());
+    try (Scanner in = new Scanner(System.in)) {
+      while(true){
+      String opcionUsuario = in.nextLine();
+      int opcion; 
+      try {
+          opcion = Integer.parseInt(opcionUsuario);
+      } catch (NumberFormatException e) {
+        System.out.println(chemsito.getUsuario().getIdioma().noEsNumero());
+          continue;
+      }
+      switch(opcion){
+        case 1:
+            verCatalogo();
+          break;
+        case 2:
+            comprar();
+          break;
+        case 3:
+          cerrarSesion();
+          break;
+        case 4:
+            salir();
+          break;
+        default:
+          System.out.println(chemsito.getUsuario().getIdioma().escogeOpcion());
+        }
       }
     }
   }

@@ -1,6 +1,9 @@
 package State;
 
+import java.util.ArrayList;
 import java.util.Scanner;
+
+import Composite.CatalogoComponente;
 import Composite.MenuDepartamental;
 
 
@@ -13,7 +16,6 @@ public class Comprar implements EstadoMark{
     this.carrito = new ArrayList<CatalogoComponente>();
   }
   public void inicializarEstado(){
-    Scanner in = new Scanner(System.in);
     System.out.println(chemsito.getUsuario().getIdioma().bienvenidaCompra());
     System.out.println(menu.getMenu());
     agregarCarrito();
@@ -21,50 +23,50 @@ public class Comprar implements EstadoMark{
   }
 
   private void pagarCarrito(){
-    Scanner in = new Scanner(System.in);
-    while(true){
-      try{
-        System.out.println(chemsito.getUsuario().getIdioma().costo() + calcularPrecio());
-        System.out.println(chemsito.getUsuario().getIdioma().continuarCompra());
-        String tmp = in.nextLine();
-        int opcion = Integer.parseInt(tmp);
-        switch (opcion) {
-          case 1:
-            chemsito.setEstado(chemsito.getEstadoCompraSegura());
-            this.carrito = new ArrayList<CatalogoComponente>();
-            break;
-          case 2:
-            inicializarEstado();
-            break;
-          default:
-            System.out.println(chemsito.getUsuario().getIdioma().escogeOpcion());
-            break;
+    try (Scanner in = new Scanner(System.in)) {
+      while(true){
+        try{
+          System.out.println(chemsito.getUsuario().getIdioma().costo() + calcularPrecio());
+          System.out.println(chemsito.getUsuario().getIdioma().continuarCompra());
+          String tmp = in.nextLine();
+          int opcion = Integer.parseInt(tmp);
+          switch (opcion) {
+            case 1:
+              chemsito.setEstado(chemsito.getEstadoCompraSegura());
+              this.carrito = new ArrayList<CatalogoComponente>();
+              break;
+            case 2:
+              inicializarEstado();
+              break;
+            default:
+              System.out.println(chemsito.getUsuario().getIdioma().escogeOpcion());
+              break;
+          }
+        }catch(NumberFormatException e){
+          System.err.println(chemsito.getUsuario().getIdioma().noEsNumero());
         }
-      }catch(NumberFormatException e){
-        System.err.println(chemsito.getUsuario().getIdioma().noEsNumero());
-      }
 
+      }
     }
-    in.close();
   }
 
-  private void agregarCarrito(){
-    Scanner in = new Scanner(System.in);
-    while(true){
-      try{
-        System.out.println(chemsito.getUsuario().getIdioma().seguirComprando());
-        String tmp = in.nextLine();
-        int numeroItem = Integer.parseInt(tmp);
-        if(numeroItem == 1)
-          return;
-        this.carrito.add(menu.getChild(numero));
-      }catch(NumberFormatException e){
-        System.err.println(chemsito.getUsuario().getIdioma().noEsNumero());
-      }catch(CodigoIncorrectoException e){
-        System.err.println(chemsito.getUsuario().getIdioma().codigoIncorrecto());
+  private void agregarCarrito() {
+    try (Scanner in = new Scanner(System.in)) {
+      while(true){
+        try{
+          System.out.println(chemsito.getUsuario().getIdioma().seguirComprando());
+          String tmp = in.nextLine();
+          int numeroItem = Integer.parseInt(tmp);
+          if(numeroItem == 1)
+            return;
+          this.carrito.add(menu.getChild(numeroItem));
+        }catch(NumberFormatException e){
+          System.err.println(chemsito.getUsuario().getIdioma().noEsNumero());
+        }catch(CodigoIncorrectoException e){
+          System.err.println(chemsito.getUsuario().getIdioma().codigoIncorrecto());
+        }
       }
     }
-    in.close();
   }
 
   private int calcularPrecio(){
@@ -77,6 +79,18 @@ public class Comprar implements EstadoMark{
   public void verCatalogo(){
     chemsito.setEstado(chemsito.getEstadoVerCatalogo());
     chemsito.inicializarEstado();
+  }
+  @Override
+  public void comprar() {
+
+  }
+  @Override
+  public void cerrarSesion() {
+
+  }
+  @Override
+  public void salir() {
+
   }
 
 }
