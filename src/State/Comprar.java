@@ -7,37 +7,71 @@ import Composite.MenuDepartamental;
 public class Comprar implements EstadoMark{
   CheemsMark chemsito;
   MenuDepartamental menu;
+  ArrayList<CatalogoComponente> carrito;
   public Comprar(CheemsMark chemsito){
     this.chemsito = chemsito;
+    this.carrito = new ArrayList<CatalogoComponente>();
   }
   public void inicializarEstado(){
     Scanner in = new Scanner(System.in);
     System.out.println(chemsito.getUsuario().getIdioma().bienvenidaCompra());
     System.out.println(menu.getMenu());
-    int precio = 0;
-    while(precio ==  0){
-      try{
-        String numeroItem = in.nextLine();
-        int numero = Integer.parseInt(numeroItem);
-        precio = menu.getChild(numero).getPrecio();
-      }catch (NumberFormatException ex){
-        System.err.println("Ese no es un numero");
-      }catch(CodigoIncorrectoException e){
-        System.err.println(e);
-      }
-    }
-    System.out.println(chemsito.getUsuario().getIdioma().costo() + precio);
-    System.out.println(chemsito.getUsuario().getIdioma().continuarCompra());
+    agregarCarrito();
+    pagarCarrito();
+  }
+
+  private void pagarCarrito(){
+    Scanner in = new Scanner(System.in);
     while(true){
       try{
-      String tmp = in.nextLine(); 
-      int opcion = Integer.parseInt(tmp);
-      if(opcion == 1)
-        chemsito.setEstado(chemsito.getEstadoCompraSegura());
-      else if(opcion == 2)
-        inicializarEstado();
+        System.out.println(chemsito.getUsuario().getIdioma().costo() + calcularPrecio());
+        System.out.println(chemsito.getUsuario().getIdioma().continuarCompra());
+        String tmp = in.nextLine();
+        int opcion = Integer.parseInt(tmp);
+        switch (opcion) {
+          case 1:
+            chemsito.setEstado(chemsito.getEstadoCompraSegura());
+            this.carrito = new ArrayList<CatalogoComponente>();
+            break;
+          case 2:
+            inicializarEstado();
+            break;
+          default:
+            System.out.println(chemsito.getUsuario().getIdioma().escogeOpcion());
+            break;
+        }
+      }catch(NumberFormatException e){
+        System.err.println(chemsito.getUsuario().getIdioma().noEsNumero());
+      }
+
+    }
+    in.close();
+  }
+
+  private void agregarCarrito(){
+    Scanner in = new Scanner(System.in);
+    while(true){
+      try{
+        System.out.println(chemsito.getUsuario().getIdioma().seguirComprando());
+        String tmp = in.nextLine();
+        int numeroItem = Integer.parseInt(tmp);
+        if(numeroItem == 1)
+          return;
+        this.carrido.add(menu.getChild(numero));
+      }catch(NumberFormatException e){
+        System.err.println(chemsito.getUsuario().getIdioma().noEsNumero());
+      }catch(CodigoIncorrectoException e){
+        System.err.println(chemsito.getUsuario().getIdioma().codigoIncorrecto());
       }
     }
+    in.close();
+  }
+
+  private int calcularPrecio(){
+    int precio = 0; 
+    for(CatalogoComponente item : carrito)
+      precio += item.getPrecio();
+    return precio;
   }
 
   public void verCatalogo(){

@@ -19,24 +19,24 @@ public class IniciarSesion implements EstadoMark{
     try {
         opcion = Integer.parseInt(opcionUsuario);
     } catch (NumberFormatException e) {
-      System.out.println("Error: Debe ingresar un número entero. Intente nuevamente.");
+      System.out.println(chemsito.getUsuario().getIdioma().noEsNumero());
         continue;
     }
     switch(opcion){
       case 1:
-        chemsito.setEstado(chemsito.getEstadoVerCatalogo());
+          verCatalogo()
         break;
       case 2:
-        chemsito.setEstado(chemsito.getEstadoComprar());
+          comprar();
         break;
       case 3:
-        chemsito.setEstado(chemsito.getEstadoCerrarSesion());
+        cerrarSesion();
         break;
       case 4:
-        chemsito.setEstado(chemsito.getEstadoSalir());;
+          salir();
         break;
       default:
-        System.out.println("Error. Debe ingresar una opcion valida.");
+        System.out.println(chemsito.getUsuario().getIdioma().escogeOpcion());
       }
     }
   }
