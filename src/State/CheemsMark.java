@@ -9,6 +9,7 @@ public class CheemsMark {
   EstadoMark iniciar;
   EstadoMark iniciarSesion;
   EstadoMark estadoActual;
+  BDUsuarios baseUsuarios;
   User usuario; 
 
   public CheemsMark(){
@@ -20,6 +21,8 @@ public class CheemsMark {
     this.estadoActual = this.iniciar;
     
   }
+  public void setBaseUsuarios(BDUsuarios baseUsuarios){ this.baseUsuarios = baseUsuarios; }
+  public BDUsuarios getBaseUsuarios(){ return this.baseUsuarios; }
   public User getUsuario(){ return this.usuario; }
   public EstadoMark getEstado(){ return this.estadoActual; }
   public EstadoMark getEstadoVerCatalogo(){ return this.verCatalogo; }

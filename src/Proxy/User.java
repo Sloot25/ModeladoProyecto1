@@ -1,8 +1,9 @@
 package Proxy;
 
+import java.io.Serializable;
 import Strategy.Idioma;
 
-public interface User {
+public interface User extends Serializable {
   public String getNombre();
   public String getPais();
   public String getDireccion();

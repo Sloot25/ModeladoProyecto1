@@ -53,6 +53,7 @@ public class IniciarSesion implements EstadoMark{
   }
   public boolean salir(){
     System.out.println(chemsito.getUsuario().getIdioma().despedirse());
+    chemsito.getBaseUsuarios().guardarArchivos();
     return false;
   }
 }

@@ -57,18 +57,22 @@ public class Iniciar implements EstadoMark{
     String nombre = in.nextLine();
     System.out.println("Por favor, ingrese su contraseña: ");
     String contrasenia = in.nextLine();
-    if(map.get(nombre).validarUsuario(contrasenia)){
+    if(chemsito.getBaseUsuarios().validarUsuario(nombre, contrasenia) && chemsito.getBaseUsuario().usuarioPerimitido()){
       chemsito.setEstado(chemsito.getEstadoIniciarSesion());
       chemsito.inicializarEstado();
-      chemsito.setUsuario(map.get(nombre));
-    }
-    else{ 
+      chemsito.setUsuario(chemsito.getBaseUsuarios().getUser(nombre));
+    }else if(chemsito.getBaseUsuarios().validarUsuario(nombre)){
+      System.err.println("El usuario no está permitido");
+      System.out.println("Procederemos a salir");
+      return false;
+    } else{ 
       System.err.println("Tu usuario y/o contrasenia es incorrecta");
     }
     return true;
   }
   public boolean salir(){
     System.out.println("Finalizando el programa...");
+    chemsito.getBaseUsuarios().guardarArchivos();
     return false;
   }
 }

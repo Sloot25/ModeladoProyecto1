@@ -61,6 +61,9 @@ public class CompraSegura implements EstadoMark{
   }
   private void banearUsuario(){
     System.out.println(chemsito.getUsuario().getIdioma().baneado()); 
+    chemsito.getBaseUsuarios().banearUsuario(chemsito.getUsuario());
+    chemsito.getBaseUsuarios().guardarArchivos();
+    chemsito.getBaseUsuarios().leerArchivos();
   }
   public CompraSegura(CheemsMark chemsito){
     this.chemsito = chemsito;
@@ -85,6 +88,7 @@ public class CompraSegura implements EstadoMark{
   }
   public boolean salir(){
     System.out.println(chemsito.getUsuario().getIdioma().despedirse());
+    chemsito.getBaseUsuarios().guardarArchivos();
     return false;
   }
   public boolean iniciarSesion(){
