@@ -37,4 +37,69 @@ public class Latino implements Idioma{
   public String completarCompra(){
     return "Gracias por tu compra wey, no tenemos garantia en articulos salidos de la tienda";
   }
+
+  @Override
+  public String repeticionCatalogo() {
+      return "Ya estas viendo el catalgo wey";
+  }
+
+  @Override
+  public String cerrarSesion() {
+    return "Ta bueno, cerrando tu sesión";
+  }
+
+  @Override
+  public String sesionIniciada() {
+    return "Pero si ya iniciaste sesión wey, ¿para que quieres hacerlo de nuevo?";
+  }
+
+  @Override
+  public String bienvenidaCompra() {
+    return "Bienvenido carnal, ¿qué quieres comprar?";
+  }
+
+  @Override
+  public String costo() {
+    return "Mira carnal, ya te la sabes, nos vas a tener que pagar";
+  }
+
+  @Override
+  public String continuarCompra() {
+    return "¿Quieres continuar bro, o le paramos? (1. Si, 2. No)";
+  }
+
+  @Override
+  public String escogeOpcion() {
+    return "Porfa wey, elige una de las opciones";
+  }
+
+  @Override
+  public String noEsNumero() {
+    return "No mames wey, eso ni es un numero";
+  }
+
+  @Override
+  public String seguirComprando() {
+    return "¿Quieres comprar otra cosa carnalito?";
+  }
+
+  @Override
+  public String codigoIncorrecto() {
+    return "Mira werito, la neta este codigo esta incorrecto";
+  }
+
+  @Override
+  public String iniciandoCompra() {
+    return "Vas, pasame tu datos para pagar";
+  }
+
+  @Override
+  public String compraFinalizada() {
+    return "Muchas gracias, carnal, ya completaste tu compra";
+  }
+
+  @Override
+  public String baneado() {
+    return "Hermano cayo la ley, esta rodeada tu casa \n Bromita, no vamos a llamar a la policia, pero ya te baneamos";
+  }
 }
