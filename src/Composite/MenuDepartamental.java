@@ -4,10 +4,27 @@ import State.CheemsMark;
 public class MenuDepartamental {
     CheemsMark cheemsito;
     CatalogoComponente todosLosDepartamentos = new Departamento("Departamentos", "Todos los departamentos");
+    CatalogoComponente departamentoElectrodomesticos;
+    CatalogoComponente departamentoElectronica;
+    CatalogoComponente departamentoAlimentos;
+    CatalogoComponente departamentoRopa;
+    CatalogoComponente departamentoMascotas;
     
     public MenuDepartamental(CheemsMark cheemsito){
       this.cheemsito = cheemsito;
       generarDepartamentos();
+    }
+
+    public CatalogoComponente getDepartamentoAlimentos() {
+      return departamentoAlimentos;
+    }
+
+    public CatalogoComponente getDepartamentoElectronica() {
+      return departamentoElectronica;
+    }
+    
+    public CatalogoComponente getDepartamentoElectrodomesticos() {
+      return departamentoElectrodomesticos;
     }
 
     public String getMenu(){
@@ -21,11 +38,11 @@ public class MenuDepartamental {
     
     public void generarDepartamentos(){
       // Creamos los departamentos y el menu que almacenará a todos los departamentos
-      CatalogoComponente departamentoElectrodomesticos = new Departamento("Electrodomesticos", "Todos los electrodomesticos y linea blanca.");
-      CatalogoComponente departamentoElectronica = new Departamento("Electronica", "Todos los productos de electronica.");
-      CatalogoComponente departamentoAlimentos = new Departamento("Alimentos", "Todos los productos de despensa y alimentos.");
-      CatalogoComponente departamentoRopa = new Departamento("Ropa", "Todos los productos de ropa y accesorios");
-      CatalogoComponente departamentoMascotas = new Departamento("Mascotas", "Todos los productos que tu bendicion necesita");
+      departamentoElectrodomesticos = new Departamento("Electrodomesticos", "Todos los electrodomesticos y linea blanca.");
+      departamentoElectronica = new Departamento("Electronica", "Todos los productos de electronica.");
+      departamentoAlimentos = new Departamento("Alimentos", "Todos los productos de despensa y alimentos.");
+      departamentoRopa = new Departamento("Ropa", "Todos los productos de ropa y accesorios");
+      departamentoMascotas = new Departamento("Mascotas", "Todos los productos que tu bendicion necesita");
     
       todosLosDepartamentos.add(departamentoElectrodomesticos);
       todosLosDepartamentos.add(departamentoElectronica);

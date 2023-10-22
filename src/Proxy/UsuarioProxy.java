@@ -5,7 +5,7 @@ import Strategy.Idioma;
 import Strategy.Ingles;
 import Strategy.Latino;
 
-public class UsuarioProxy implements User{
+public class UsuarioProxy implements User {
   String nombre; 
   String contrasenia; 
   String telefono; 
@@ -71,5 +71,9 @@ public class UsuarioProxy implements User{
   @Override
   public boolean validarUsuario(String contrasenia) {
     return contrasenia.equals(this.contrasenia);
+  }
+  @Override
+  public void actualizarDescuento(int descuento) {
+    this.user.actualizarDescuento(descuento); 
   }
 }

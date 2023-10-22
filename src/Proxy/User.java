@@ -1,8 +1,9 @@
 package Proxy;
 
+import Observer.Observer;
 import Strategy.Idioma;
 
-public interface User {
+public interface User extends Observer {
   public String getNombre();
   public String getPais();
   public String getDireccion();
