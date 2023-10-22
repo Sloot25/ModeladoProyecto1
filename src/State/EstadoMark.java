@@ -1,10 +1,10 @@
 package State; 
 
 public interface EstadoMark{
-  public void verCatalogo();
-  public void comprar();
-  public void cerrarSesion();
-  public void salir();
-  public void inicializarEstado();
+  public boolean verCatalogo();
+  public boolean comprar();
+  public boolean cerrarSesion();
+  public boolean salir();
+  public boolean inicializarEstado();
 }
 

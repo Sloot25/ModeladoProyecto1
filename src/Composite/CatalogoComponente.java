@@ -26,7 +26,7 @@ public abstract class CatalogoComponente{
   public void remove(CatalogoComponente catalogo){
     throw new UnsupportedOperationException();
   }
-  public CatalogoComponente getChild(int i){
+  public CatalogoComponente getChild(int i) throws CodigoIncorrectoException{
     throw new UnsupportedOperationException();
   }
   public String toString(){

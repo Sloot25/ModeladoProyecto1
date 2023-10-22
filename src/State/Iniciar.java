@@ -12,28 +12,47 @@ public class Iniciar implements EstadoMark{
     this.map = new HashMap<String, User>();
   }
 
-  public void inicializarEstado(){
-    throw new UnsupportedOperationException();
-  }
-  public void ingresar(){
-    throw new UnsupportedOperationException();
-  }
-  public void verCatalogo(){
-    throw new UnsupportedOperationException(); 
-  }
-  public void comprar(){
-    throw new UnsupportedOperationException(); 
-  }
-  public void cerrarSesion(){
-    throw new UnsupportedOperationException();
-  }
-  public void IniciarSesion(){
-    Scanner in = new Scanner(System.in);
+  public boolean inicializarEstado(){
     System.out.println("****************************************");
     System.out.println("*                                      *");
     System.out.println("*        Bienvenido a CheemsMark       *");
     System.out.println("*                                      *");
     System.out.println("****************************************\n");
+    while(true){
+      try{
+        Scanner in = new Scanner(System.in);
+        System.out.println("1. Iniciar Sesion");
+        System.out.println("2. Salir");
+        String tmp = in.nextLine();
+        int op = Integer.parseInt(tmp);
+        switch (op) {
+          case 1:
+            return IniciarSesion();
+          case 2: 
+            return salir();
+          default:
+            System.err.println("Elige una opcion valida");
+            break;
+        }
+      }catch(NumberFormatException e){
+        System.err.println("Debes ingresar un numero");
+      }
+    }
+  }
+  public boolean ingresar(){
+    throw new UnsupportedOperationException();
+  }
+  public boolean verCatalogo(){
+    throw new UnsupportedOperationException(); 
+  }
+  public boolean comprar(){
+    throw new UnsupportedOperationException(); 
+  }
+  public boolean cerrarSesion(){
+    throw new UnsupportedOperationException();
+  }
+  public boolean IniciarSesion(){
+    Scanner in = new Scanner(System.in);
     System.out.println("Por favor, ingrese su usuario: ");
     String nombre = in.nextLine();
     System.out.println("Por favor, ingrese su contraseña: ");
@@ -41,13 +60,16 @@ public class Iniciar implements EstadoMark{
     if(map.get(nombre).validarUsuario(contrasenia)){
       chemsito.setEstado(chemsito.getEstadoIniciarSesion());
       chemsito.inicializarEstado();
+      chemsito.setUsuario(map.get(nombre));
     }
     else{ 
       System.err.println("Tu usuario y/o contrasenia es incorrecta");
     }
+    return true;
   }
-  public void salir(){
+  public boolean salir(){
     System.out.println("Finalizando el programa...");
+    return false;
   }
 }
   

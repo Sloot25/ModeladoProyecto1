@@ -12,21 +12,25 @@ public class MenuDepartamental {
     }
 
     public String getMenu(){
-      switch (usuario.getPais()) {
-        case "Mexico":
-          catalogo.getChild(2).aplicarDescuento(usuario.getDescuento());
-          break;
-        case "Espania":
-          catalogo.getChild(0).aplicarDescuento(usuario.getDescuento());
-          break; 
-        case "Estados Unidos":
-          catalogo.getChild(1).aplicarDescuento(usuario.getDescuento());
-          break;
+      try {
+        switch (usuario.getPais()) {
+          case "Mexico":
+            catalogo.getChild(2).aplicarDescuento(usuario.getDescuento());
+            break;
+          case "Espania":
+            catalogo.getChild(0).aplicarDescuento(usuario.getDescuento());
+            break; 
+          case "Estados Unidos":
+            catalogo.getChild(1).aplicarDescuento(usuario.getDescuento());
+            break;
+        }
+      }catch(Exception e){
+        //System.err.println(usuario.getIdioma().errorAplicarDescuento());
       }
       return catalogo.toString();
     }
 
-    public CatalogoComponente getChild(int i){
+    public CatalogoComponente getChild(int i) throws CodigoIncorrectoException{
       return catalogo.getChild(i);
     }
     

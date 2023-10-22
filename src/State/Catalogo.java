@@ -10,25 +10,52 @@ public class Catalogo implements EstadoMark{
     this.chemsito = chemsito;
     menu = new MenuDepartamental(chemsito.getUsuario());
   }  
-  public void inicializarEstado(){
-    System.out.println(chemsito.getUsuario().getIdioma().verCatalogo());
+  public boolean inicializarEstado(){
+    //System.out.println(chemsito.getUsuario().getIdioma().verCatalogo());
     System.out.println(menu.getMenu());
+    Scanner in = new Scanner(System.in);
+    while(true){
+      try{
+        System.out.println(chemsito.getUsuario().getIdioma().opciones());
+        String tmp = in.nextLine();
+        int op = Integer.parseInt(tmp);
+        switch (op) {
+          case 1:
+            return verCatalogo(); 
+          case 2: 
+            return comprar();
+          case 3: 
+            return cerrarSesion();
+          case 4: 
+            return salir();
+          default:
+            System.out.println(chemsito.getUsuario().getIdioma().escogeOpcion());
+            break;
+        }
+      }catch(NumberFormatException e){
+        System.err.println(chemsito.getUsuario().getIdioma().noEsNumero());
+      }
+    }
   }
-  public void verCatalogo(){
+  public boolean verCatalogo(){
     System.out.println(chemsito.getUsuario().getIdioma().repeticionCatalogo());
+    return true;
   }
-  public void comprar(){
+  public boolean comprar(){
     chemsito.setEstado(chemsito.getEstadoComprar());
-    chemsito.inicializarEstado();
+    return true;
   }
-  public void cerrarSesion(){
+  public boolean cerrarSesion(){
     chemsito.setEstado(chemsito.getEstadoIniciar());
     System.out.println(chemsito.getUsuario().getIdioma().cerrarSesion());
+    return true;
   }
-  public void iniciarSesion(){
+  public boolean iniciarSesion(){
     System.out.println(chemsito.getUsuario().getIdioma().sesionIniciada());
+    return true;
   }
-  public void salir(){
+  public boolean salir(){
     System.out.println(chemsito.getUsuario().getIdioma().despedirse());
+    return false;
   }
 }

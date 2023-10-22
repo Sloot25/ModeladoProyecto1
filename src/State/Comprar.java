@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import Composite.MenuDepartamental;
 import Composite.CatalogoComponente;
+import Composite.CodigoIncorrectoException;
 
 
 public class Comprar implements EstadoMark{
@@ -14,15 +15,15 @@ public class Comprar implements EstadoMark{
     this.chemsito = chemsito;
     this.carrito = new ArrayList<CatalogoComponente>();
   }
-  public void inicializarEstado(){
+  public boolean inicializarEstado(){
     Scanner in = new Scanner(System.in);
     System.out.println(chemsito.getUsuario().getIdioma().bienvenidaCompra());
     System.out.println(menu.getMenu());
     agregarCarrito();
-    pagarCarrito();
+    return pagarCarrito();
   }
 
-  private void pagarCarrito(){
+  private boolean pagarCarrito(){
     Scanner in = new Scanner(System.in);
     while(true){
       try{
@@ -33,11 +34,15 @@ public class Comprar implements EstadoMark{
         switch (opcion) {
           case 1:
             chemsito.setEstado(chemsito.getEstadoCompraSegura());
+            ((CompraSegura)chemsito.getEstado()).setPrecio(calcularPrecio());
             this.carrito = new ArrayList<CatalogoComponente>();
-            break;
+            return true;
           case 2:
             inicializarEstado();
-            break;
+            return true;
+          case 3: 
+            return iniciarSesion();
+            
           default:
             System.out.println(chemsito.getUsuario().getIdioma().escogeOpcion());
             break;
@@ -47,9 +52,12 @@ public class Comprar implements EstadoMark{
       }
 
     }
-    in.close();
   }
 
+  public boolean iniciarSesion(){
+    chemsito.setEstado(chemsito.getEstadoIniciarSesion());
+    return true;
+  }
   private void agregarCarrito(){
     Scanner in = new Scanner(System.in);
     while(true){
@@ -59,14 +67,13 @@ public class Comprar implements EstadoMark{
         int numeroItem = Integer.parseInt(tmp);
         if(numeroItem == 1)
           return;
-        this.carrido.add(menu.getChild(numero));
+        this.carrito.add(menu.getChild(numeroItem));
       }catch(NumberFormatException e){
         System.err.println(chemsito.getUsuario().getIdioma().noEsNumero());
       }catch(CodigoIncorrectoException e){
         System.err.println(chemsito.getUsuario().getIdioma().codigoIncorrecto());
       }
     }
-    in.close();
   }
 
   private int calcularPrecio(){
@@ -76,9 +83,22 @@ public class Comprar implements EstadoMark{
     return precio;
   }
 
-  public void verCatalogo(){
+  public boolean verCatalogo(){
     chemsito.setEstado(chemsito.getEstadoVerCatalogo());
-    chemsito.inicializarEstado();
+    return true;
   }
+  public boolean comprar(){
+    chemsito.setEstado(chemsito.getEstadoComprar());
+    return true;
+  }
+  public boolean cerrarSesion(){
+    chemsito.setEstado(chemsito.getEstadoIniciar());
+    return true;
+  }
+  public boolean salir(){
+    System.out.println(chemsito.getUsuario().getIdioma().despedirse());
+    return false;
+  }
+  
 
 }

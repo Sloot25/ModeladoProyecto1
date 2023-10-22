@@ -4,15 +4,17 @@ public class CompraSegura implements EstadoMark{
   CheemsMark chemsito; 
   int precio;
   int intentos;
-  public void inicializarEstado(){
+  public boolean inicializarEstado(){
     System.out.println(chemsito.getUsuario().getIdioma().iniciandoCompra());
-    if(intentos >= 3)
+    if(intentos >= 3){
       banearUsuario();
+      return false;
+    }
     else 
-      validarBanca();
+      return validarBanca();
   }
 
-  private void validarBanca(){
+  private boolean validarBanca(){
     Scanner in = new Scanner(System.in);
     while(true){
       try{
@@ -20,7 +22,7 @@ public class CompraSegura implements EstadoMark{
         int banca = Integer.parseInt(tmp);
         if(chemsito.getUsuario().validarCuenta(banca)){
           chemsito.getUsuario().actualizarDinero(chemsito.getUsuario().getDinero()- this.precio);
-          finalizarCompra();
+          return finalizarCompra();
         }else{
           intentos++;
           inicializarEstado();
@@ -29,9 +31,8 @@ public class CompraSegura implements EstadoMark{
         System.out.println(chemsito.getUsuario().getIdioma().noEsNumero());
       }
     }
-    in.close();
   }
-  private void finalizarCompra(){
+  private boolean finalizarCompra(){
     System.out.println(chemsito.getUsuario().getIdioma().compraFinalizada());
     System.out.println(chemsito.getUsuario().getIdioma().opciones());
     Scanner in = new Scanner(System.in);
@@ -41,17 +42,13 @@ public class CompraSegura implements EstadoMark{
         int opcion = Integer.parseInt(tmp);
         switch (opcion) {
           case 1:
-            verCatalogo();
-            break;
+            return verCatalogo();
           case 2: 
-            comprar();
-            break; 
+            return comprar();
           case 3: 
-            cerrarSesion();
-            break; 
+            return cerrarSesion();
           case 4: 
-            salir();
-            break;
+            return salir();
           default:
             System.out.println(chemsito.getUsuario().getIdioma().escogeOpcion());
             break;
@@ -74,22 +71,23 @@ public class CompraSegura implements EstadoMark{
   public void setPrecio(int precio){
     this.precio = precio;
   }
-  public void verCatalogo(){
+  public boolean verCatalogo(){
     chemsito.setEstado(chemsito.getEstadoVerCatalogo());
-    chemsito.inicializarEstado();
+    return true;
   }
-  public void comprar(){
+  public boolean comprar(){
     chemsito.setEstado(chemsito.getEstadoComprar());
-    chemsito.inicializarEstado();
+    return true;
   }
-  public void cerrarSesion(){
+  public boolean cerrarSesion(){
     chemsito.setEstado(chemsito.getEstadoIniciar());
-    chemsito.inicializarEstado();
+    return true;
   }
-  public void salir(){
+  public boolean salir(){
     System.out.println(chemsito.getUsuario().getIdioma().despedirse());
+    return false;
   }
-  public void iniciarSesion(){
+  public boolean iniciarSesion(){
     throw new UnsupportedOperationException();
   }
 }

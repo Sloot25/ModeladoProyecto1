@@ -9,7 +9,7 @@ import Strategy.Idioma;
 import Strategy.Ingles;
 import Strategy.Latino;
 
-public class Usuario implements User {
+public class Usuario implements User, Observer {
   String nombre; 
   RegionDescuento regionDescuento; 
   int descuento;

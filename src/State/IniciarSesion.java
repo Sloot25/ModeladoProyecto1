@@ -8,10 +8,11 @@ public class IniciarSesion implements EstadoMark{
   public IniciarSesion(CheemsMark chemsito){
     this.chemsito = chemsito;
   }
-  public void inicializarEstado(){
+  public boolean inicializarEstado(){
     System.out.println(chemsito.getUsuario().getIdioma().saludar());
     Scanner in = new Scanner(System.in);
     while(true){
+      System.out.println(chemsito.getUsuario().getIdioma().opciones());
     String opcionUsuario = in.nextLine();
     int opcion; 
     try {
@@ -22,39 +23,36 @@ public class IniciarSesion implements EstadoMark{
     }
     switch(opcion){
       case 1:
-        verCatalogo();
-        break;
+        return verCatalogo();
       case 2:
-        comprar();
-        break;
+        return comprar();
       case 3:
-        cerrarSesion();
-        break;
+        return cerrarSesion();
       case 4:
-        salir();
-        break;
+        return salir();
       default:
         System.out.println(chemsito.getUsuario().getIdioma().escogeOpcion());
       }
     }
   }
 
-  public void verCatalogo(){
+  public boolean verCatalogo(){
     chemsito.setEstado(chemsito.getEstadoVerCatalogo());
-    chemsito.inicializarEstado();
+    return true;
   }
-  public void comprar(){
+  public boolean comprar(){
     chemsito.setEstado(chemsito.getEstadoComprar());
-    chemsito.inicializarEstado();
+    return true;
   }
-  public void cerrarSesion(){
+  public boolean cerrarSesion(){
     chemsito.setEstado(chemsito.getEstadoIniciar()); 
-    chemsito.inicializarEstado();
+    return true;
   }
-  public void iniciarSesion(){
+  public boolean iniciarSesion(){
     throw new UnsupportedOperationException();
   }
-  public void salir(){
+  public boolean salir(){
     System.out.println(chemsito.getUsuario().getIdioma().despedirse());
+    return false;
   }
 }
