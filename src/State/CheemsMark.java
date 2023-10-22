@@ -1,6 +1,7 @@
 package State;
 
 import Proxy.User;
+import Proxy.BDUsuarios;
 
 public class CheemsMark {
   EstadoMark verCatalogo; 

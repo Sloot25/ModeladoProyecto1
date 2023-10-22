@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 public class DescuentoLatam implements RegionDescuento{
   ArrayList<Observer> lista; 
-  int descuento;
   public DescuentoLatam(){
     lista = new ArrayList<Observer>();
   }
@@ -17,12 +16,8 @@ public class DescuentoLatam implements RegionDescuento{
     lista.remove(observer);
   }
 
-  public void actualizarDescuento(int numero){
-    this.descuento = numero;
-  }
-
-  public void notifyObserver(){
+  public void notifyObserver(int descuento){
     for(Observer observer : lista)
-      observer.actualizarDescuento(this.descuento);
+      observer.actualizarDescuento(descuento);
   }
 }

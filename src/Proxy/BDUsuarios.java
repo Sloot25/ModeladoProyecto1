@@ -5,9 +5,10 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.FileNotFoundException;
 import java.util.HashMap;
 import java.util.ArrayList;
-
+import Observer.*;
 import State.CheemsMark;
 
 public class BDUsuarios{
@@ -19,43 +20,43 @@ public class BDUsuarios{
     leerArchivos();
   }
     
-  public void generarUsuarios(){
-    usuarioMexa2 = new UsuarioProxy(new Usuario("Juan Pablo Perez",
+  private void generarUsuarios(){
+    User usuarioMexa2 = new UsuarioProxy(new Usuario("Juan Pablo Perez",
                         "caldodepollo",
                         "5553525251",
                         "Riva Palacio 4, La Merced, CDMX",
                         "Mexico",
                         30000,
                         99995));
-    usuarioMexa1 = new UsuarioProxy(new Usuario("Helena Gonzalez",
+    User usuarioMexa1 = new UsuarioProxy(new Usuario("Helena Gonzalez",
                         "contrasenia",
                         "5556143112",
                         "Corona del Rosal Mz 25, Leon, Guanajuato",
                         "Mexico",
                         40000,
                         99303));
-    usuarioEspa1 = new UsuarioProxy(new Usuario("Manuel de la Garza",
+    User usuarioEspa1 = new UsuarioProxy(new Usuario("Manuel de la Garza",
                         "password",
                         "3429527592",
                         "San Agustin 23, Madrid",
                         "Espania",
                         50000,
                         84445));
-    usuarioEspa2 = new UsuarioProxy(new Usuario("Martina Bolzanon",
+    User usuarioEspa2 = new UsuarioProxy(new Usuario("Martina Bolzanon",
                         "jamonserrano",
                         "3429527592",
                         "Av Horacio Carvajal 312, Granada",
                         "Estados Unidos",
                         45000,
                         84048));
-    usuarioEUA2 = new UsuarioProxy(new Usuario("John Smith",
+    User usuarioEUA2 = new UsuarioProxy(new Usuario("John Smith",
                         "partyparty",
                         "8099237212",
                         "Av Siempre Viva 742, Springfield",
                         "Massachussetts",
                         20000,
                         13335));
-    usuarioEUA1 = new UsuarioProxy(new Usuario("Catherine Paulson",
+    User usuarioEUA1 = new UsuarioProxy(new Usuario("Catherine Paulson",
                         "oceans8",
                         "8021948562",
                         "Federal Hall 12, Brooklyn",
@@ -63,12 +64,12 @@ public class BDUsuarios{
                         80000,
                         13853));
     
-    usuarios.add(usuarioMexa1.getNombre(),usuarioMexa1);
-    usuarios.add(usuarioEspa1.getNombre(),usuarioEspa1);
-    usuarios.add(usuarioEUA1.getNombre(),usuarioEUA1);
-    usuarios.add(usuarioMexa2.getNombre(),usuarioMexa2);
-    usuarios.add(usuarioEspa2.getNombre(),usuarioEspa2);
-    usuarios.add(usuarioEU2.getNombre(),usuarioEUA2);
+    usuarios.put(usuarioMexa1.getNombre(),usuarioMexa1);
+    usuarios.put(usuarioEspa1.getNombre(),usuarioEspa1);
+    usuarios.put(usuarioEUA1.getNombre(),usuarioEUA1);
+    usuarios.put(usuarioMexa2.getNombre(),usuarioMexa2);
+    usuarios.put(usuarioEspa2.getNombre(),usuarioEspa2);
+    usuarios.put(usuarioEUA2.getNombre(),usuarioEUA2);
   }
     
   // Serialización
@@ -99,10 +100,10 @@ public class BDUsuarios{
     
     try{
       FileOutputStream archivosRegiones = new FileOutputStream("regiones.ser");
-      ObjectOutputStream salidaRegiones = new ObjectOutputStream(archivoRegiones);
+      ObjectOutputStream salidaRegiones = new ObjectOutputStream(archivosRegiones);
       salidaRegiones.writeObject(this.regiones);
       salidaRegiones.close();
-      archivoRegiones.close();
+      archivosRegiones.close();
     }catch(IOException e){
       e.printStackTrace();
     }
@@ -112,13 +113,14 @@ public class BDUsuarios{
     try {
       FileInputStream archivoEntradaUsuarios = new FileInputStream("usuarios.ser");
       ObjectInputStream entradaUsuarios = new ObjectInputStream(archivoEntradaUsuarios);
-      this.usuarios = (HashMap<String, User>) entradaUsuarios.readObject();
+      @SuppressWarnings("unchecked") HashMap<String, User> map = (HashMap<String, User>) entradaUsuarios.readObject();
+      this.usuarios = map;
       entradaUsuarios.close();
       archivoEntradaUsuarios.close();
-    }catch(ClassNotFoundException e){
+    }catch(FileNotFoundException e){
       this.usuarios = new HashMap<String, User>();
       generarUsuarios();
-    }catch (IOException e) {
+    }catch (Exception e) {
       e.printStackTrace();
     }
   
@@ -126,26 +128,35 @@ public class BDUsuarios{
     try {
       FileInputStream archivoEntradaBaneados = new FileInputStream("baneados.ser");
       ObjectInputStream entradaBaneados = new ObjectInputStream(archivoEntradaBaneados);
-      this.usuariosBaneados = (HashMap<String, User>) entradaBaneados.readObject();
+      @SuppressWarnings("unchecked") HashMap<String, User> map = (HashMap<String, User>) entradaBaneados.readObject();
+      this.usuariosBaneados = map;
       entradaBaneados.close();
       archivoEntradaBaneados.close();
-    }catch(ClassNotFoundException e){
+    }catch(FileNotFoundException e){
       this.usuariosBaneados = new HashMap<String, User>();
-    }catch (IOException) {
+    }catch (Exception e) {
       e.printStackTrace();
     }
 
     try{
       FileInputStream archivoRegiones = new FileInputStream("regiones.ser");
       ObjectInputStream entradaRegiones = new ObjectInputStream(archivoRegiones);
-      this.regiones = (ArrayList<RegionDescuento>) entradaRegiones.readObject();
+      @SuppressWarnings("unchecked") ArrayList<RegionDescuento> list = (ArrayList<RegionDescuento>) entradaRegiones.readObject();
+      this.regiones = list;
       entradaRegiones.close();
       archivoRegiones.close();
-    }catch(ClassNotFoundException e){
+    }catch(FileNotFoundException e){
       this.regiones = new ArrayList<RegionDescuento>();
-    }catch(IOException e){
+      this.regiones.add(new DescuentoEspania());
+      this.regiones.add(new DescuentoEU());
+      this.regiones.add(new DescuentoLatam());
+    }catch(Exception e){
       e.printStackTrace();
     }
+  }
+
+  public void actualizarDescuento(int pos, int desc){
+    this.regiones.get(pos).notifyObserver(desc);
   }
   
   public boolean validarUsuario(String nombre, String contrasenia){
@@ -165,6 +176,6 @@ public class BDUsuarios{
   }
   
   public void banearUsuario(User user){
-    this.usuariosBaneados.add(user.getNombre(), user);
+    this.usuariosBaneados.put(user.getNombre(), user);
   }
 }

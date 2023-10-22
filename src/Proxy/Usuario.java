@@ -4,6 +4,7 @@ import Observer.DescuentoEU;
 import Observer.DescuentoEspania;
 import Observer.DescuentoLatam;
 import Observer.RegionDescuento;
+import Observer.Observer;
 import Strategy.Espania;
 import Strategy.Idioma;
 import Strategy.Ingles;

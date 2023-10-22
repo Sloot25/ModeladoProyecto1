@@ -8,10 +8,10 @@ public class Catalogo implements EstadoMark{
   MenuDepartamental menu;
   public Catalogo(CheemsMark chemsito){
     this.chemsito = chemsito;
-    menu = new MenuDepartamental(chemsito.getUsuario());
   }  
   public boolean inicializarEstado(){
     //System.out.println(chemsito.getUsuario().getIdioma().verCatalogo());
+    menu = new MenuDepartamental(chemsito.getUsuario());
     System.out.println(menu.getMenu());
     Scanner in = new Scanner(System.in);
     while(true){

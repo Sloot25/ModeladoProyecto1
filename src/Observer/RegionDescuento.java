@@ -4,5 +4,5 @@ import java.io.Serializable;
 public interface RegionDescuento extends Serializable{
   public void registerObserver(Observer observer);
   public void removeObserver(Observer observer);
-  public void notifyObserver();
+  public void notifyObserver(int desc);
 }
