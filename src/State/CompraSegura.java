@@ -6,28 +6,30 @@ public class CompraSegura implements EstadoMark{
   int intentos;
   public void inicializarEstado(){
     System.out.println(chemsito.getUsuario().getIdioma().iniciandoCompra());
-    Scanner in = new Scanner(System.in);
-    while(true){
-      try{
-        String tmp = in.nextLine();
-        int banca = Integer.parseInt(tmp);
-        
-      }
-    }
+    if(intentos >= 3)
+      banearUsuario();
+    else 
+      validarBanca();
   }
+
   private void validarBanca(){
     Scanner in = new Scanner(System.in);
     while(true){
       try{
         String tmp = in.nextLine();
         int banca = Integer.parseInt(tmp);
-        if(chemsito.getUsuario().validarCuenta(banca))
+        if(chemsito.getUsuario().validarCuenta(banca)){
           chemsito.getUsuario().actualizarDinero(chemsito.getUsuario().getDinero()- this.precio);
           finalizarCompra();
+        }else{
+          intentos++;
+          inicializarEstado();
+        }
       }catch(NumberFormatException e){
         System.out.println(chemsito.getUsuario().getIdioma().noEsNumero());
       }
     }
+    in.close();
   }
   private void finalizarCompra(){
     System.out.println(chemsito.getUsuario().getIdioma().compraFinalizada());
@@ -59,6 +61,9 @@ public class CompraSegura implements EstadoMark{
         System.err.println(chemsito.getUsuario().getIdioma().noEsNumero());
       }
     }
+  }
+  private void banearUsuario(){
+    System.out.println(chemsito.getUsuario().getIdioma().baneado()); 
   }
   public CompraSegura(CheemsMark chemsito){
     this.chemsito = chemsito;
