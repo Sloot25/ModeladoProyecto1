@@ -52,103 +52,103 @@ public class MenuDepartamental {
 
       // Agregando los productos
       departamentoElectrodomesticos.add(new CatalogoItem("Lavadora Whirpeel", 
-                                                        52938,
+                                                        111,
                                                         14699, 
                                                         departamentoElectrodomesticos.getNombre(),
                                                         "La mejor lavadora del mercado y secadora del mercado."));
       departamentoElectrodomesticos.add(new CatalogoItem("Microondas Whirpeel", 
-                                                        52394,
+                                                        112,
                                                         3299, 
                                                         departamentoElectrodomesticos.getNombre(),
                                                         "Super horno con campana extractora."));                                  
       departamentoElectrodomesticos.add(new CatalogoItem("Refrigerador Mebe", 
-                                                        51202,
+                                                        113,
                                                         7899, 
                                                         departamentoElectrodomesticos.getNombre(),
                                                         "Refrigerador 10 pies con maquina generadora de hielo."));
       departamentoElectrodomesticos.add(new CatalogoItem("Estufa Whirpeel", 
-                                                        58237,
+                                                        114,
                                                         5390, 
                                                         departamentoElectrodomesticos.getNombre(),
                                                         "Estufa grande con 6 quemadores y horno."));
         
       departamentoElectronica.add(new CatalogoItem("Pantalla 60 pulgadas LJ", 
-                                                    42039,
+                                                    121,
                                                     17999, 
                                                     departamentoElectronica.getNombre(),
                                                     "Pantalla 4k de 60 pulgadas, HDR, Cristal UHD y todas esas cosas de las teles."));
       departamentoElectronica.add(new CatalogoItem("Lapot ASIR", 
-                                                    41638,
+                                                    122,
                                                     15000, 
                                                     departamentoElectronica.getNombre(),
                                                     "Laptop de 15.6 pulgadas, Ryzen 5 3500U, 500 Gb SSD, 16 Gb RAM."));                                  
       departamentoElectronica.add(new CatalogoItem("Poly Station 5", 
-                                                    47942,
+                                                    123,
                                                     10999, 
                                                     departamentoElectronica.getNombre(),
                                                     "Por si no te alcanza para el play station original, esta bien prro caro."));
       departamentoElectronica.add(new CatalogoItem("Nientiendo Switch", 
-                                                    41282,
+                                                    124,
                                                     6000, 
                                                     departamentoElectronica.getNombre(),
                                                     "Ahora tu tia tendra la razon al decir que dejes ese Nientiendo con esta consola."));
       departamentoAlimentos.add(new CatalogoItem("Nutelle",
-                                                30918,
+                                                131,
                                                 45,
                                                 departamentoAlimentos.getNombre(), 
                                                 "Ahora con mas chocolate que avellana."));
       departamentoAlimentos.add(new CatalogoItem("Arroz del Cerro",
-                                                36447,
+                                                132,
                                                 32,
                                                 departamentoAlimentos.getNombre(), 
                                                 "1 kg de arroz. Y ya."));
       departamentoAlimentos.add(new CatalogoItem("Cornfleis",
-                                                30295,
+                                                133,
                                                 75,
                                                 departamentoAlimentos.getNombre(), 
                                                 "Ricas hojuelas de maiz endulzadas con miel."));
       departamentoAlimentos.add(new CatalogoItem("Pasta Antigua",
-                                                36918,
+                                                134,
                                                 18,
                                                 departamentoAlimentos.getNombre(), 
                                                 "Pasta linguini de 400 g."));
       departamentoMascotas.add(new CatalogoItem("Croquetas Campeon",
-                                                29639,
+                                                141,
                                                 1299,
                                                 departamentoMascotas.getNombre(),
                                                 "Bulto de 25 kg de croquetas de cordero. Aiuda aun no nos avala PROFECO."));
       departamentoMascotas.add(new CatalogoItem("Juguete Chillon",
-                                                28612,
+                                                142,
                                                 200,
                                                 departamentoMascotas.getNombre(),
                                                 "Juguete chillon en forma de hueso resistente."));
       departamentoMascotas.add(new CatalogoItem("Collar de picos",
-                                                12639,
+                                                143,
                                                 300,
                                                 departamentoMascotas.getNombre(),
                                                 "Correa resistente e imponente. Ideal para tu pitbull de 40 kilos al que le dices Princesa."));
       departamentoMascotas.add(new CatalogoItem("Shampoo tio Pancho",
-                                                29639,
+                                                144,
                                                 400,
                                                 departamentoMascotas.getNombre(),
                                                 "Shampoo ideal contra la caida del pelo."));
       departamentoRopa.add(new CatalogoItem("Playera basica",
-                                            12852,
+                                            151,
                                             150,
                                             departamentoRopa.getNombre(),
                                             "Playera basica ideal para este verano."));
       departamentoRopa.add(new CatalogoItem("Pantalon basico",
-                                            11023,
+                                            152,
                                             350,
                                             departamentoRopa.getNombre(),
                                             "Pantalon basico agujereado, ideal para este verano."));
       departamentoRopa.add(new CatalogoItem("Blazer",
-                                            12945,
+                                            153,
                                             650,
                                             departamentoRopa.getNombre(),
                                             "Blazer monocromatico que te hara lucir aesthetic."));
       departamentoRopa.add(new CatalogoItem("Chaqueta",
-                                            17624,
+                                            154,
                                             550,
                                             departamentoRopa.getNombre(),
                                             "Chaqueta ligera de diseño clasico."));

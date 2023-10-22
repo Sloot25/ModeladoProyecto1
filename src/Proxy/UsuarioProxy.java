@@ -1,11 +1,13 @@
 package Proxy;
 
+import java.io.Serializable;
+
 import Strategy.Espania;
 import Strategy.Idioma;
 import Strategy.Ingles;
 import Strategy.Latino;
 
-public class UsuarioProxy implements User {
+public class UsuarioProxy implements User, Serializable{
   String nombre; 
   String contrasenia; 
   String telefono; 
