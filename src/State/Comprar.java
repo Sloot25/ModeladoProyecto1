@@ -16,6 +16,7 @@ public class Comprar implements EstadoMark{
     this.carrito = new ArrayList<CatalogoComponente>();
   }
   public boolean inicializarEstado(){
+    menu = new MenuDepartamental(chemsito.getUsuario());
     Scanner in = new Scanner(System.in);
     System.out.println(chemsito.getUsuario().getIdioma().bienvenidaCompra());
     System.out.println(menu.getMenu());

@@ -1,17 +1,22 @@
 package Composite; 
-import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Departamento extends CatalogoComponente{
   private String nombre;
   private String descripcion; 
-  private ArrayList<CatalogoComponente> items = new ArrayList<CatalogoComponente>();
+  private HashMap<Integer, CatalogoComponente> items;
+  private int codigo;
 
 
-  public Departamento(String nombre, String descripcion){
+  public Departamento(String nombre, String descripcion, int codigo){
     this.nombre = nombre;
     this.descripcion = descripcion; 
+    this.codigo = codigo;
+    items = new HashMap<Integer, CatalogoComponente>();
   }
-   
+  public int getCodigo(){
+    return this.codigo;
+  }
   public String getNombre(){
     return this.nombre;
   }
@@ -23,24 +28,26 @@ public class Departamento extends CatalogoComponente{
   }
 
   public void add(CatalogoComponente catalogo){
-    items.add(catalogo);
+    items.put(catalogo.getCodigo(),catalogo);
   }
   public void remove(CatalogoComponente catalogo){
-    items.remove(catalogo);
+    items.remove(catalogo.getCodigo());
   }
-  public CatalogoComponente getChild(int i){
+  public CatalogoComponente getChild(int i) throws CodigoIncorrectoException{
+    if(!items.containsKey(i))
+      throw new CodigoIncorrectoException();
     return items.get(i);
   }
   public String print(String espaciado){
-    String res = espaciado + "Nombre: " + getNombre() + '\n' +
-    espaciado + "Descripcion: " + getDescripcion() + '\n';
-    for(CatalogoComponente cat : items)
-      res+= cat.print(espaciado + "   ");
-    return res;
+    String res = espaciado + "Nombre: " + getNombre() + '\n'  +
+    espaciado + "Descripcion: " + getDescripcion() + '\n' + '\n';
+    for(Integer numero : items.keySet())
+      res+= items.get(numero).print(espaciado + "   ");
+    return res + '\n' + '\n';
   }
   public void aplicarDescuento(int descuento){
-    for(CatalogoComponente cat : items){
-      cat.aplicarDescuento(descuento);
+    for(Integer numero : items.keySet()){
+      items.get(numero).aplicarDescuento(descuento);
     } 
   }
 }

@@ -39,7 +39,7 @@ public class CatalogoItem extends CatalogoComponente{
     espaciado + "Departamento: " + getDepartamento() + '\n' + 
     espaciado + "Codigo de Barra: " + getCodigo() + '\n' + 
     espaciado + "Precio: " + (getPrecio() - (getPrecio()*getDescuento())/100) + '\n' + 
-    espaciado + "Descripcion: " + getDescripcion();
+    espaciado + "Descripcion: " + getDescripcion() + '\n' + '\n';
   }
   public void aplicarDescuento(int descuento){
     this.descuento = descuento;
