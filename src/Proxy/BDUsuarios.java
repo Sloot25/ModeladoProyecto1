@@ -54,7 +54,7 @@ public class BDUsuarios implements Serializable{
                         "partyparty",
                         "8099237212",
                         "Av Siempre Viva 742, Springfield",
-                        "Massachussetts",
+                        "Estados Unidos",
                         20000,
                         13335, this));
     User usuarioEUA1 = new UsuarioProxy(new Usuario("Catherine Paulson",
