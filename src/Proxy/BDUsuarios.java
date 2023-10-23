@@ -17,10 +17,12 @@ public class BDUsuarios implements Serializable{
   HashMap<String,User> usuariosBaneados;
   ArrayList<RegionDescuento> regiones;
 
+  /*Constructor de la clase*/
   public BDUsuarios(){
     leerArchivos();
   }
-    
+
+  /*Genera los usuarios por defecto del proyecto y los agrega a las estructuras de datos*/
   private void generarUsuarios(){
     User usuarioMexa2 = new UsuarioProxy(new Usuario("Juan",
                         "caldodepollo",
@@ -74,6 +76,8 @@ public class BDUsuarios implements Serializable{
   }
     
   // Serialización
+  // Metodo encargado de guardar las estructuras en sus respectivos archivos 
+  // a traves de la serializacion de los mismos
   public void guardarArchivos(){
     // Serializacion usuarios activos  
     try {
@@ -109,6 +113,11 @@ public class BDUsuarios implements Serializable{
       e.printStackTrace();
     }
   }
+
+  /* Metodo encargado de la lectura de archivos 
+   * Si no encuentra los archivos generara los objetos desde 0 y los llenara 
+   * con los valores por defecto
+   * */
   public void leerArchivos(){
 
     try{
@@ -156,12 +165,22 @@ public class BDUsuarios implements Serializable{
     }
   }
 
+  /* Actualiza los descuentos a traves del subject 
+   *
+   * @param pos: la posicion en la lista 
+   *        int: la cantidad de descuento 
+   * */
   public void actualizarDescuento(int pos, int desc){
     this.regiones.get(pos).notifyObserver(desc);
   }
+
+  /* @return getter RegionDescuento*/
   public RegionDescuento getRegion(int pos){
     return regiones.get(pos);
   }
+
+  /*@return boolean correspondiente a la validacion del usuario a traves 
+   * del metodo en User*/
   
   public boolean validarUsuario(String nombre, String contrasenia){
     if(this.usuarios.containsKey(nombre)){
@@ -171,14 +190,20 @@ public class BDUsuarios implements Serializable{
     return false;
   }
 
+  /*@ return true si el usuario no esta baneado 
+   *  false si el usuario esta baneado */
   public boolean usuarioPermitido(String nombre){
     return !this.usuariosBaneados.containsKey(nombre);
   }
 
+  /*@return user getter del usuario*/
   public User getUsuario(String nombre){
     return this.usuarios.get(nombre);
   }
   
+  /* Agrega un usuario al HashMap de baneados
+   * @param User a banear 
+   * */
   public void banearUsuario(User user){
     this.usuariosBaneados.put(user.getNombre(), user);
   }
