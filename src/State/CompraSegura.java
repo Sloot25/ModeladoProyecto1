@@ -40,7 +40,8 @@ public class CompraSegura implements EstadoMark{
           }
           else{
             System.out.println(chemsito.getUsuario().getIdioma().noHayDinero());
-            chemsito.setEstado(chemsito.getEstadoIniciar());
+            setIntentos(0);
+            return iniciarSesion();
           }
         }else{
           intentos++;
@@ -142,6 +143,7 @@ public class CompraSegura implements EstadoMark{
     return false;
   }
   public boolean iniciarSesion(){
-    throw new UnsupportedOperationException();
+    chemsito.setEstado(chemsito.getEstadoIniciarSesion());
+    return true;
   }
 }
