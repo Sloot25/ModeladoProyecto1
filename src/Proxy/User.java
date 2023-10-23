@@ -4,11 +4,12 @@ import java.io.Serializable;
 import Strategy.Idioma;
 
 public interface User extends Serializable {
+
   public String getNombre();
   public String getPais();
   public String getDireccion();
-  public boolean validarCuenta(int cuenta);
   public int getDinero();
+  public boolean validarCuenta(int cuenta);
   public boolean validarUsuario(String contrasenia);
   public Idioma getIdioma();
   public String getTelefono();
