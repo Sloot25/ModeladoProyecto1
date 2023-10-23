@@ -42,7 +42,7 @@ public class CatalogoItem extends CatalogoComponente{
     espaciado + "Descripcion: " + getDescripcion() + '\n' + '\n';
   }
   public void aplicarDescuento(int descuento){
-    this.descuento = descuento;
-    this.precio = (int)precio*(100-descuento)/100;
+    System.out.println(descuento);
+    this.precio = (int)precio*(descuento)/100;
   }
 }

@@ -44,10 +44,10 @@ public class BDUsuarios implements Serializable{
                         50000,
                         84445, this));
     User usuarioEspa2 = new UsuarioProxy(new Usuario("Martina",
-                        "jamonserrano",
+                        "holamundo",
                         "3429527592",
                         "Av Horacio Carvajal 312, Granada",
-                        "Estados Unidos",
+                        "Espania",
                         45000,
                         84048, this));
     User usuarioEUA2 = new UsuarioProxy(new Usuario("John Smith",

@@ -7,7 +7,11 @@ public class Espania implements Idioma{
     return "Pero madre mia Willy, estos ofertones estan que flipas chaval: ";
   }
   public String opciones(){
-    return "Venga Tio, Te muestro vuestras opciones en el catalogo: ";
+    return "1. Ver catalogo de la ostia.\n"
+            + "2. Realizar compra tio.\n"
+            + "3. Cerrar sesión tio. \n"
+            + "4. Salir " +  '\n' + 
+            "que opcion desea uste': \n";
   }
   public String entrega(){
     return "Ostiones, estos son los artilugios que has pillado: ";
@@ -19,11 +23,8 @@ public class Espania implements Idioma{
             + "*      Sistema de compras     *"
             + "*                             *"
             + "*******************************\n";
-    result +="Buenos dias Chavalin, que opcion desea uste': \n";
-    result += "1. Ver catalogo de la ostia.\n"
-            + "2. Realizar compra tio.\n"
-            + "3. Cerrar sesión tio. \n"
-            + "4. Salir."; 
+    result +="Buenos dias Chavalin, Andamos a todo gas \n";
+
     return result;
   }
 

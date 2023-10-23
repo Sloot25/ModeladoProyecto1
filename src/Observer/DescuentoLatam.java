@@ -17,6 +17,7 @@ public class DescuentoLatam implements RegionDescuento{
   }
 
   public void notifyObserver(int descuento){
+    System.out.println(descuento);
     for(Observer observer : lista)
       observer.actualizarDescuento(descuento);
   }

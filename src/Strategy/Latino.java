@@ -8,7 +8,11 @@ public class Latino implements Idioma{
   }
 
   public String opciones(){
-    return "Aqui puedes ver algunas de las opciones dentro de nuestro catalogo: ";
+    return "Aqui puedes ver algunas de las opciones: " + '\n'
+            + "1. Ver catalogo.\n"
+            + "2. Realizar compra.\n"
+            + "3. Cerrar sesión.\n" 
+            + "4. Salir."; 
   }
 
   public String entrega(){
@@ -22,11 +26,8 @@ public class Latino implements Idioma{
             + "*      Sistema de compras     *"
             + "*                             *"
             + "*******************************\n";
-    result +="Hola wey, eres bienvenido en este changarro.\nRecuerda hoy no fiamos, maniana si:\n";
-    result += "1. Ver catalogo.\n"
-            + "2. Realizar compra.\n"
-            + "3. Cerrar sesión.\n" 
-            + "4. Salir."; 
+    result +="Hola wey, eres bienvenido en este changarro.\nRecuerda hoy no fiamos, maniana si\n";
+
     return result;
   }
 
@@ -55,17 +56,19 @@ public class Latino implements Idioma{
 
   @Override
   public String bienvenidaCompra() {
-    return "Bienvenido carnal, ¿qué quieres comprar?";
+    return "Bienvenido carnal, Estas son las talachitas que tenemos a la venta: ";
   }
 
   @Override
   public String costo() {
-    return "Mira carnal, ya te la sabes, nos vas a tener que pagar";
+    return "Mira carnal, ya te la sabes, nos vas a tener que pagar: ";
   }
 
   @Override
   public String continuarCompra() {
-    return "¿Quieres continuar bro, o le paramos? (1. Si, 2. No)";
+    return "1. Pagame antes de irte wey" + '\n'
+    + "2. Aqui tenemos mas cosas guerito/a" + '\n'
+    + "3. No hay problema wey, regresa pronto";
   }
 
   @Override
@@ -80,7 +83,8 @@ public class Latino implements Idioma{
 
   @Override
   public String seguirComprando() {
-    return "¿Quieres comprar otra cosa carnalito?";
+    return "¿Quieres comprar otra cosa carnalito?" + '\n' 
+    + "Ingresa el codigo o 1 para irte a tangamandapio";
   }
 
   @Override

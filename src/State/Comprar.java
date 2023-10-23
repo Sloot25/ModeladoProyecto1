@@ -21,6 +21,8 @@ public class Comprar implements EstadoMark{
     System.out.println(chemsito.getUsuario().getIdioma().bienvenidaCompra());
     System.out.println(menu.getMenu());
     agregarCarrito();
+    if(calcularPrecio() == 0)
+      return iniciarSesion();
     return pagarCarrito();
   }
 

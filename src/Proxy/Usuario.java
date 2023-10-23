@@ -82,6 +82,7 @@ public class Usuario implements User, Observer {
     this.dinero = dinero;
   }
   public void actualizarDescuento(int descuento){
+    System.out.println("user" + descuento);
     this.descuento = descuento;
   }
 }
