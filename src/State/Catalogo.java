@@ -6,11 +6,14 @@ import java.util.Scanner;
 public class Catalogo implements EstadoMark{
   CheemsMark chemsito;
   MenuDepartamental menu;
+  /* Constructor de la clase 
+   * 
+   * @param Recibe un objeto de tipo CheemsMark
+   * */
   public Catalogo(CheemsMark chemsito){
     this.chemsito = chemsito;
   }  
   public boolean inicializarEstado(){
-    //System.out.println(chemsito.getUsuario().getIdioma().verCatalogo());
     menu = new MenuDepartamental(chemsito.getUsuario());
     System.out.println(menu.getMenu());
     Scanner in = new Scanner(System.in);

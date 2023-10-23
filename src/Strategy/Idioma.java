@@ -2,6 +2,10 @@ package Strategy;
 
 import java.io.Serializable;
 
+/* interface correspondiente a Strategy
+ * 
+ *  Todos los metodos son String para poder manejar el cambio de idioma
+ * */
 public interface Idioma extends Serializable{
   public String ofertas();
   public String opciones();

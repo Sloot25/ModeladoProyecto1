@@ -11,10 +11,20 @@ public class Comprar implements EstadoMark{
   CheemsMark chemsito;
   MenuDepartamental menu;
   ArrayList<CatalogoComponente> carrito;
+
+  /* Constructor de la clase 
+   * 
+   * @param Recibe un objeto de tipo CheemsMark
+   * */
   public Comprar(CheemsMark chemsito){
     this.chemsito = chemsito;
     this.carrito = new ArrayList<CatalogoComponente>();
   }
+  /*  Metodo que se encarga de las acciones correspondientes al estado 
+   * Imprime el catalogo, al mismo tiempo que da la bienvenida y permite el ingreso de articulos al carrito 
+   *
+   *  @return boolean correspondiente a sigue el programa sigue ejecutandose 
+   * */
   public boolean inicializarEstado(){
     menu = new MenuDepartamental(chemsito.getUsuario());
     Scanner in = new Scanner(System.in);
@@ -26,12 +36,18 @@ public class Comprar implements EstadoMark{
     return pagarCarrito();
   }
 
+  /* @return Regresa una cadena correspndiente al carrito de compra*/
   private String imprimitCarrito(){
     String res = "";
     for(CatalogoComponente item : carrito)
       res += item.print("  ");
     return res;
   }
+
+  /*  Metodo correspondiente  a pagar el carrito, muestra opciones para pagar, seguir comprando o cancelar la compra
+   *
+   *  @return boolean correspondiente a si el programa se sigue ejecutando
+   * */
   private boolean pagarCarrito(){
     Scanner in = new Scanner(System.in);
     while(true){
@@ -65,10 +81,14 @@ public class Comprar implements EstadoMark{
     }
   }
 
+  /* Devuelve al estado inicial del menu 
+   * @return boolean correspondiente a si el programa se sigue ejecutando
+   * */
   public boolean iniciarSesion(){
     chemsito.setEstado(chemsito.getEstadoIniciarSesion());
     return true;
   }
+  /* Metodo encargado de agregar articulos al carrito*/
   private void agregarCarrito(){
     Scanner in = new Scanner(System.in);
     while(true){
@@ -87,13 +107,16 @@ public class Comprar implements EstadoMark{
     }
   }
 
+  /* @return int correspondiente al precio actual del carrito*/
   private int calcularPrecio(){
     int precio = 0; 
     for(CatalogoComponente item : carrito)
       precio += item.getPrecio();
     return precio;
   }
-
+  /*  Metodos de cambio de estado
+   *
+   * @return boolean correspondiente a si el estado sigue ejecutandose */
   public boolean verCatalogo(){
     chemsito.setEstado(chemsito.getEstadoVerCatalogo());
     return true;

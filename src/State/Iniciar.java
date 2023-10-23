@@ -5,13 +5,20 @@ import java.util.Scanner;
 
 public class Iniciar implements EstadoMark{
   CheemsMark chemsito; 
-  HashMap<String, User> map;
 
+  /* Constructor de la clase 
+   * 
+   * @param Recibe un objeto de tipo CheemsMark
+   * */
   public Iniciar(CheemsMark chemsito){
     this.chemsito = chemsito;
-    this.map = new HashMap<String, User>();
   }
 
+  /*Metodo encargado de realizar las acciones correspondientes de cada estado 
+   *  Realiza un saludo y permite el inicio de sesion del usuario, asi como la salida de la aplicacion 
+   *
+   *  @return boolean Correspondiente a si el programa sigue corriendo 
+   * */
   public boolean inicializarEstado(){
     System.out.println("****************************************");
     System.out.println("*                                      *");
@@ -39,6 +46,10 @@ public class Iniciar implements EstadoMark{
       }
     }
   }
+  /* Metodos correspondientes al cambio de estado 
+   *
+   * @return boolean Correspondiente a saber si el programa sigue corriendo
+   * */
   public boolean ingresar(){
     throw new UnsupportedOperationException();
   }
@@ -51,6 +62,13 @@ public class Iniciar implements EstadoMark{
   public boolean cerrarSesion(){
     throw new UnsupportedOperationException();
   }
+
+  /*Realiza el inicio de sesion verificando si el usuario se encuentra en la base 
+   * asi como si el usuario no se encuentra baneado de la base 
+   * Si el usuario es vaido ingresa al resto del programa 
+   *
+   *  @return boolean correspondiente a si el programa sigue corriendo
+   * */
   public boolean IniciarSesion(){
     Scanner in = new Scanner(System.in);
     System.out.println("Por favor, ingrese su usuario: ");
@@ -70,6 +88,9 @@ public class Iniciar implements EstadoMark{
     }
     return true;
   }
+  /*  Sale del programa
+   *
+   *  @return boolean correspondiente a si el programa sigue corriendo*/
   public boolean salir(){
     System.out.println("Finalizando el programa...");
     chemsito.getBaseUsuarios().guardarArchivos();

@@ -5,9 +5,20 @@ import Composite.CatalogoComponente;
 public class IniciarSesion implements EstadoMark{
   CheemsMark chemsito;
 
+  /* Constructor de la clase 
+   * 
+   * @param Recibe un objeto de tipo CheemsMark
+   * */
   public IniciarSesion(CheemsMark chemsito){
     this.chemsito = chemsito;
   }
+
+  /*  Metodo encargado de realizar las acciones correspondientes a cada estado
+   *  Nos permite ingresar a alguno de los otros estados del Proyecto y nos 
+   *  notifica de los descuentos
+   *
+   *  @return boolean Correspondiente a saber si seguimos dentro o fuera del programa
+   * */
   public boolean inicializarEstado(){
     System.out.println(chemsito.getUsuario().getIdioma().saludar());
     System.out.println(chemsito.getUsuario().getIdioma().ofertas() + chemsito.getUsuario().getDescuento());
@@ -37,6 +48,10 @@ public class IniciarSesion implements EstadoMark{
     }
   }
 
+  /* Metodos correspondiente al cambio de estado 
+   *
+   *  @return boolean Correspondiente a si la aplicacion sigue corriendo en dicho estado 
+   * */
   public boolean verCatalogo(){
     chemsito.setEstado(chemsito.getEstadoVerCatalogo());
     return true;

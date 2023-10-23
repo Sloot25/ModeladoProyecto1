@@ -13,6 +13,7 @@ public class CheemsMark {
   BDUsuarios baseUsuarios;
   User usuario; 
 
+  /*Constructor de la clase, inicializa los atributos*/
   public CheemsMark(){
     this.verCatalogo = new Catalogo(this);
     this.comprar = new Comprar(this);
@@ -22,6 +23,7 @@ public class CheemsMark {
     this.estadoActual = this.iniciar;
     
   }
+  /* Setters y getters de la clase*/
   public void setBaseUsuarios(BDUsuarios baseUsuarios){ this.baseUsuarios = baseUsuarios; }
   public BDUsuarios getBaseUsuarios(){ return this.baseUsuarios; }
   public User getUsuario(){ return this.usuario; }
