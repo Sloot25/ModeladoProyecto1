@@ -4,7 +4,7 @@ public class Latino implements Idioma{
   public Latino(){}
 
   public String ofertas(){
-    return "Estas son las ofertas actuales: ";
+    return "Weyes, tenemos tremendas ofertas en alimentos al chaz chaz, descuentos del ";
   }
 
   public String opciones(){

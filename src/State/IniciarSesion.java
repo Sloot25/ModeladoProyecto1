@@ -10,6 +10,7 @@ public class IniciarSesion implements EstadoMark{
   }
   public boolean inicializarEstado(){
     System.out.println(chemsito.getUsuario().getIdioma().saludar());
+    System.out.println(chemsito.getUsuario().getIdioma().ofertas() + chemsito.getUsuario().getDescuento());
     Scanner in = new Scanner(System.in);
     while(true){
       System.out.println(chemsito.getUsuario().getIdioma().opciones());

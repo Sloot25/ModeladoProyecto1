@@ -4,7 +4,7 @@ public class Ingles implements Idioma{
   public Ingles(){}
 
   public String ofertas(){
-    return "Check out our best deals and discounts";
+    return "Check out our best deals and discounts in electronic, around ";
   }
   public String opciones(){
     return "1. See catalog.\n"

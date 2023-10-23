@@ -1,5 +1,6 @@
 package State; 
 import java.util.Scanner;
+import Proxy.UsuarioProxy;
 public class CompraSegura implements EstadoMark{
   CheemsMark chemsito; 
   int precio;
@@ -7,8 +8,7 @@ public class CompraSegura implements EstadoMark{
   public boolean inicializarEstado(){
     System.out.println(chemsito.getUsuario().getIdioma().iniciandoCompra());
     if(intentos >= 3){
-      banearUsuario();
-      return false;
+      return banearUsuario();
     }
     else 
       return validarBanca();
@@ -25,15 +25,17 @@ public class CompraSegura implements EstadoMark{
           return finalizarCompra();
         }else{
           intentos++;
-          inicializarEstado();
+          return inicializarEstado();
         }
       }catch(NumberFormatException e){
+        intentos++;
         System.out.println(chemsito.getUsuario().getIdioma().noEsNumero());
       }
     }
   }
   private boolean finalizarCompra(){
     System.out.println(chemsito.getUsuario().getIdioma().compraFinalizada());
+    ((UsuarioProxy)chemsito.getUsuario()).actualizarDineroReal();
     System.out.println(chemsito.getUsuario().getIdioma().opciones());
     Scanner in = new Scanner(System.in);
     while(true){
@@ -59,11 +61,12 @@ public class CompraSegura implements EstadoMark{
       }
     }
   }
-  private void banearUsuario(){
+  private boolean banearUsuario(){
     System.out.println(chemsito.getUsuario().getIdioma().baneado()); 
     chemsito.getBaseUsuarios().banearUsuario(chemsito.getUsuario());
     chemsito.getBaseUsuarios().guardarArchivos();
     chemsito.getBaseUsuarios().leerArchivos();
+    return false;
   }
   public CompraSegura(CheemsMark chemsito){
     this.chemsito = chemsito;
