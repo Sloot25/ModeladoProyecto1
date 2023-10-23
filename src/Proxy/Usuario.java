@@ -40,14 +40,17 @@ public class Usuario implements User, Observer {
       case "Mexico":
         this.idioma = new Latino();
         this.regionDescuento = base.getRegion(2);
+        base.getRegion(2).registerObserver(this);
         break;
       case "Espania":
         this.idioma = new Espania();
         this.regionDescuento = base.getRegion(0);
+        base.getRegion(0).registerObserver(this);
         break;
       case "Estados Unidos":
         this.idioma = new Ingles();
         this.regionDescuento = base.getRegion(1);
+        base.getRegion(1).registerObserver(this);
       default:
         break;
     }
@@ -82,7 +85,6 @@ public class Usuario implements User, Observer {
     this.dinero = dinero;
   }
   public void actualizarDescuento(int descuento){
-    System.out.println("user" + descuento);
     this.descuento = descuento;
   }
 }
