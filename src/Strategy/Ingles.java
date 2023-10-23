@@ -185,4 +185,13 @@ public class Ingles implements Idioma{
   public String descripcionTienda(){
     return "In CheemsMark you can found whatever you want"; 
   }
+
+  /*
+   * Metodo que informa de falta de dinero
+   *
+   * @return String en el idioma correspondiente
+   */
+  public String noHayDinero() {
+    return "Sorry bro, you aint got no money to pay for this";
+  }
 }

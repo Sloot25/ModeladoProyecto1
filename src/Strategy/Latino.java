@@ -200,4 +200,13 @@ public class Latino implements Idioma{
   public String descripcionTienda(){
     return "Aqui tenemos de todo guerito/a, todo lo que desee lo tenemos esta a su alcance ";
   }
+
+  /*
+   * Metodo que informa de falta de dinero
+   *
+   * @return String en el idioma correspondiente
+   */
+  public String noHayDinero() {
+    return "Wey no mames, ni siquiera traes feria para pagar";
+  }
 }

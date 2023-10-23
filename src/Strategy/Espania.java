@@ -202,4 +202,13 @@ public class Espania implements Idioma{
   public String descripcionTienda(){
     return "Ala tio, que aqui podeis conseguir todo lo que buscais";
   }
+
+  /*
+   * Metodo que informa de falta de dinero
+   *
+   * @return String en el idioma correspondiente
+   */
+  public String noHayDinero() {
+    return "Fua chaval, pero si no teneis ni pasta para pagar, ¿en que estais pensando?";
+  }
 }
