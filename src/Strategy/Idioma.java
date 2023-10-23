@@ -26,6 +26,7 @@ public interface Idioma extends Serializable{
   public String iniciandoCompra();
   public String compraFinalizada();
   public String baneado();
+  public String noHayDinero();
   public String nombreTienda();
   public String descripcionTienda();
 }

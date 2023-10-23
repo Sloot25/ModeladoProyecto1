@@ -33,9 +33,16 @@ public class CompraSegura implements EstadoMark{
       try{
         String tmp = in.nextLine();
         int banca = Integer.parseInt(tmp);
-        if(chemsito.getUsuario().validarCuenta(banca)){
-          chemsito.getUsuario().actualizarDinero(chemsito.getUsuario().getDinero()- this.precio);
-          return finalizarCompra();
+        if(chemsito.getUsuario().validarCuenta(banca) ){
+          if((chemsito.getUsuario().getDinero() - this.precio)>=0){
+            chemsito.getUsuario().actualizarDinero(chemsito.getUsuario().getDinero()- this.precio);
+            return finalizarCompra();
+          }
+          else{
+            System.out.println(chemsito.getUsuario().getIdioma().noHayDinero());
+            setIntentos(0);
+            return iniciarSesion();
+          }
         }else{
           intentos++;
           return inicializarEstado();
@@ -136,6 +143,7 @@ public class CompraSegura implements EstadoMark{
     return false;
   }
   public boolean iniciarSesion(){
-    throw new UnsupportedOperationException();
+    chemsito.setEstado(chemsito.getEstadoIniciarSesion());
+    return true;
   }
 }
