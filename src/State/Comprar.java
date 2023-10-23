@@ -26,10 +26,18 @@ public class Comprar implements EstadoMark{
     return pagarCarrito();
   }
 
+  private String imprimitCarrito(){
+    String res = "";
+    for(CatalogoComponente item : carrito)
+      res += item.print("  ");
+    return res;
+  }
   private boolean pagarCarrito(){
     Scanner in = new Scanner(System.in);
     while(true){
       try{
+        System.out.println(chemsito.getUsuario().getIdioma().entrega());
+        System.out.println(imprimitCarrito());
         System.out.println(chemsito.getUsuario().getIdioma().costo() + calcularPrecio());
         System.out.println(chemsito.getUsuario().getIdioma().continuarCompra());
         String tmp = in.nextLine();

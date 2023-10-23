@@ -2,10 +2,22 @@ package Strategy;
 
 public class Espania implements Idioma{
   public Espania(){}
+  
+  /*  Metodo encargado de Informar de las ofertas disponibles, este metodo esta seteado en Electrodomesticos 
+   *  debido a los requisitos del proyecto (Puede ser alterado mas adelante)
+   *  
+   *  @return Cadena de ofertas correspondiente al idioma
+   * */
 
   public String ofertas(){
     return "Pero madre mia Willy, Tenemos tremendos ofertones en Electrodomesticos del ";
   }
+
+  /*  Metodo que informa de las opciones disponibles en la tienda 
+   *
+   *  @return String opciones disponibles
+   * */
+
   public String opciones(){
     return "1. Ver catalogo de la ostia.\n"
             + "2. Realizar compra tio.\n"
@@ -13,6 +25,11 @@ public class Espania implements Idioma{
             + "4. Salir " +  '\n' + 
             "que opcion desea uste': \n";
   }
+  
+  /*  Metrodo que informa 
+   *
+   *
+   * */
   public String entrega(){
     return "Ostiones, estos son los artilugios que has pillado: ";
   }
