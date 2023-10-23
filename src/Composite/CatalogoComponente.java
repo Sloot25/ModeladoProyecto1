@@ -29,7 +29,7 @@ public abstract class CatalogoComponente{
   public CatalogoComponente getChild(int i) throws CodigoIncorrectoException{
     throw new UnsupportedOperationException();
   }
-  public String toString(){
+  public String print(String espaciado){
     throw new UnsupportedOperationException();
   }
   public void aplicarDescuento(int descuento){

@@ -99,4 +99,12 @@ public class Espania implements Idioma{
   public String baneado() {
     return "NOOO LA CUENTA TIOOO QUE TE EQUIVOCASTE TRES VECES QUE TE EQUIVOCASTE TRES VECES, NO HAGAIS ESE ERROR, QUE TE BANEAMOS CHAVAL";
   }
+
+  public String nombreTienda(){
+    return "Bienvenido al mercadito de Cheems, Tio";
+  }
+
+  public String descripcionTienda(){
+    return "Ala tio, que aqui podeis conseguir todo lo que buscais";
+  }
 }

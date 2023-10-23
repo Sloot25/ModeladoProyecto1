@@ -70,6 +70,6 @@ public class UsuarioProxy implements User{
   }
   @Override
   public boolean validarUsuario(String contrasenia) {
-    return contrasenia.equals(this.contrasenia);
+    return user.validarUsuario(this.contrasenia);
   }
 }

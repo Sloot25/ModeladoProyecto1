@@ -97,4 +97,11 @@ public class Ingles implements Idioma{
   public String baneado() {
     return "FBI OPEN UP!!! YOU'RE GETTING BANNED FOR THIS!";
   }
+
+  public String nombreTienda(){
+    return "Welcome to CheemsMark";
+  }
+  public String descripcionTienda(){
+    return "In CheemsMark you can found whatever you want"; 
+  }
 }

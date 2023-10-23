@@ -21,9 +21,10 @@ public class Usuario implements User, Observer {
   int dinero;
   String pais; 
   Idioma idioma;
+  BDUsuarios base;
 
 
-  public Usuario(String nombre, String contrasenia, String telefono, String direccion, String pais, int dinero, int cuenta){
+  public Usuario(String nombre, String contrasenia, String telefono, String direccion, String pais, int dinero, int cuenta, BDUsuarios base){
     this.nombre = nombre; 
     this.contrasenia = contrasenia; 
     this.telefono = telefono;
@@ -31,21 +32,22 @@ public class Usuario implements User, Observer {
     this.pais = pais;
     this.cuenta = cuenta; 
     this.dinero = dinero;
+    this.base = base;
     cambiarIdioma(pais);
   }
   private void cambiarIdioma(String pais){
     switch (pais) {
       case "Mexico":
         this.idioma = new Latino();
-        this.regionDescuento = new DescuentoLatam();
+        this.regionDescuento = base.getRegion(2);
         break;
       case "Espania":
         this.idioma = new Espania();
-        this.regionDescuento = new DescuentoEspania();
+        this.regionDescuento = base.getRegion(0);
         break;
       case "Estados Unidos":
         this.idioma = new Ingles();
-        this.regionDescuento = new DescuentoEU();
+        this.regionDescuento = base.getRegion(1);
       default:
         break;
     }
@@ -59,7 +61,7 @@ public class Usuario implements User, Observer {
   }
   public int getDinero(){ return this.dinero; }
   public boolean validarUsuario(String contrasenia){
-    return contrasenia.equals(this.contrasenia);
+    return this.contrasenia.equals(this.contrasenia);
   }
   public String getTelefono(){ 
     return this.telefono;

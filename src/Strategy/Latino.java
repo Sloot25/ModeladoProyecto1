@@ -102,4 +102,11 @@ public class Latino implements Idioma{
   public String baneado() {
     return "Hermano cayo la ley, esta rodeada tu casa \n Bromita, no vamos a llamar a la policia, pero ya te baneamos";
   }
+
+  public String nombreTienda(){
+    return "Bienvenido al Tianguis CheemsMark";
+  }
+  public String descripcionTienda(){
+    return "Aqui tenemos de todo guerito/a, todo lo que desee lo tenemos esta a su alcance ";
+  }
 }

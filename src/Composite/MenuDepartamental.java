@@ -8,6 +8,7 @@ public class MenuDepartamental {
     
     public MenuDepartamental(User usuario){
       this.usuario = usuario;
+      this.catalogo = new Departamento(usuario.getIdioma().nombreTienda(), usuario.getIdioma().descripcionTienda());
       generarDepartamentos();
     }
 
@@ -27,7 +28,7 @@ public class MenuDepartamental {
       }catch(Exception e){
         //System.err.println(usuario.getIdioma().errorAplicarDescuento());
       }
-      return catalogo.toString();
+      return catalogo.print(" ");
     }
 
     public CatalogoComponente getChild(int i) throws CodigoIncorrectoException{

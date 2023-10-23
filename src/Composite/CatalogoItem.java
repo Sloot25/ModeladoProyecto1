@@ -34,12 +34,12 @@ public class CatalogoItem extends CatalogoComponente{
     return this.descuento;
   }
 
-  public String toString(){
-    return "Nombre: " + getNombre() + '\n' +
-    "Departamento: " + getDepartamento() + '\n' + 
-    "Codigo de Barra: " + getCodigo() + '\n' + 
-    "Precio: " + (getPrecio() - (getPrecio()*getDescuento())/100) + '\n' + 
-    "Descripcion: " + getDescripcion();
+  public String print(String espaciado){
+    return espaciado + "Nombre: " + getNombre() + '\n' +
+    espaciado + "Departamento: " + getDepartamento() + '\n' + 
+    espaciado + "Codigo de Barra: " + getCodigo() + '\n' + 
+    espaciado + "Precio: " + (getPrecio() - (getPrecio()*getDescuento())/100) + '\n' + 
+    espaciado + "Descripcion: " + getDescripcion();
   }
   public void aplicarDescuento(int descuento){
     this.descuento = descuento;

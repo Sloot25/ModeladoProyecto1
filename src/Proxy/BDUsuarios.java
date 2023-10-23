@@ -3,6 +3,7 @@ package Proxy;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.Serializable;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.FileNotFoundException;
@@ -11,7 +12,7 @@ import java.util.ArrayList;
 import Observer.*;
 import State.CheemsMark;
 
-public class BDUsuarios{
+public class BDUsuarios implements Serializable{
   HashMap<String, User> usuarios;
   HashMap<String,User> usuariosBaneados;
   ArrayList<RegionDescuento> regiones;
@@ -21,48 +22,48 @@ public class BDUsuarios{
   }
     
   private void generarUsuarios(){
-    User usuarioMexa2 = new UsuarioProxy(new Usuario("Juan Pablo Perez",
+    User usuarioMexa2 = new UsuarioProxy(new Usuario("Juan",
                         "caldodepollo",
                         "5553525251",
                         "Riva Palacio 4, La Merced, CDMX",
                         "Mexico",
                         30000,
-                        99995));
-    User usuarioMexa1 = new UsuarioProxy(new Usuario("Helena Gonzalez",
+                        99995, this));
+    User usuarioMexa1 = new UsuarioProxy(new Usuario("Helena",
                         "contrasenia",
                         "5556143112",
                         "Corona del Rosal Mz 25, Leon, Guanajuato",
                         "Mexico",
                         40000,
-                        99303));
-    User usuarioEspa1 = new UsuarioProxy(new Usuario("Manuel de la Garza",
+                        99303, this));
+    User usuarioEspa1 = new UsuarioProxy(new Usuario("Manuel",
                         "password",
                         "3429527592",
                         "San Agustin 23, Madrid",
                         "Espania",
                         50000,
-                        84445));
+                        84445, this));
     User usuarioEspa2 = new UsuarioProxy(new Usuario("Martina Bolzanon",
                         "jamonserrano",
                         "3429527592",
                         "Av Horacio Carvajal 312, Granada",
                         "Estados Unidos",
                         45000,
-                        84048));
+                        84048, this));
     User usuarioEUA2 = new UsuarioProxy(new Usuario("John Smith",
                         "partyparty",
                         "8099237212",
                         "Av Siempre Viva 742, Springfield",
                         "Massachussetts",
                         20000,
-                        13335));
+                        13335, this));
     User usuarioEUA1 = new UsuarioProxy(new Usuario("Catherine Paulson",
                         "oceans8",
                         "8021948562",
                         "Federal Hall 12, Brooklyn",
                         "Estados Unidos",
                         80000,
-                        13853));
+                        13853, this));
     
     usuarios.put(usuarioMexa1.getNombre(),usuarioMexa1);
     usuarios.put(usuarioEspa1.getNombre(),usuarioEspa1);
@@ -109,6 +110,22 @@ public class BDUsuarios{
     }
   }
   public void leerArchivos(){
+
+    try{
+      FileInputStream archivoRegiones = new FileInputStream("regiones.ser");
+      ObjectInputStream entradaRegiones = new ObjectInputStream(archivoRegiones);
+      @SuppressWarnings("unchecked") ArrayList<RegionDescuento> list = (ArrayList<RegionDescuento>) entradaRegiones.readObject();
+      this.regiones = list;
+      entradaRegiones.close();
+      archivoRegiones.close();
+    }catch(FileNotFoundException e){
+      this.regiones = new ArrayList<RegionDescuento>();
+      this.regiones.add(new DescuentoEspania());
+      this.regiones.add(new DescuentoEU());
+      this.regiones.add(new DescuentoLatam());
+    }catch(Exception e){
+      e.printStackTrace();
+    }
     // Deserialización usuarios activos
     try {
       FileInputStream archivoEntradaUsuarios = new FileInputStream("usuarios.ser");
@@ -137,26 +154,13 @@ public class BDUsuarios{
     }catch (Exception e) {
       e.printStackTrace();
     }
-
-    try{
-      FileInputStream archivoRegiones = new FileInputStream("regiones.ser");
-      ObjectInputStream entradaRegiones = new ObjectInputStream(archivoRegiones);
-      @SuppressWarnings("unchecked") ArrayList<RegionDescuento> list = (ArrayList<RegionDescuento>) entradaRegiones.readObject();
-      this.regiones = list;
-      entradaRegiones.close();
-      archivoRegiones.close();
-    }catch(FileNotFoundException e){
-      this.regiones = new ArrayList<RegionDescuento>();
-      this.regiones.add(new DescuentoEspania());
-      this.regiones.add(new DescuentoEU());
-      this.regiones.add(new DescuentoLatam());
-    }catch(Exception e){
-      e.printStackTrace();
-    }
   }
 
   public void actualizarDescuento(int pos, int desc){
     this.regiones.get(pos).notifyObserver(desc);
+  }
+  public RegionDescuento getRegion(int pos){
+    return regiones.get(pos);
   }
   
   public boolean validarUsuario(String nombre, String contrasenia){

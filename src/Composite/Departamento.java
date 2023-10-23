@@ -15,13 +15,14 @@ public class Departamento extends CatalogoComponente{
   public String getNombre(){
     return this.nombre;
   }
+  public String getDepartamento(){
+    return this.nombre;
+  }
   public String getDescripcion(){
     return this.descripcion;
   }
 
   public void add(CatalogoComponente catalogo){
-    if(!catalogo.getDepartamento().equals(this.nombre)){
-      throw new UnsupportedOperationException();}
     items.add(catalogo);
   }
   public void remove(CatalogoComponente catalogo){
@@ -30,11 +31,11 @@ public class Departamento extends CatalogoComponente{
   public CatalogoComponente getChild(int i){
     return items.get(i);
   }
-  public String toString(){
-    String res = "Nombre: " + getNombre() + '\n' +
-    "Descripcion: " + getDescripcion() + '\n';
+  public String print(String espaciado){
+    String res = espaciado + "Nombre: " + getNombre() + '\n' +
+    espaciado + "Descripcion: " + getDescripcion() + '\n';
     for(CatalogoComponente cat : items)
-      res+= " " + cat.toString();
+      res+= cat.print(espaciado + "   ");
     return res;
   }
   public void aplicarDescuento(int descuento){
