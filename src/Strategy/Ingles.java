@@ -20,7 +20,7 @@ public class Ingles implements Idioma{
   public String opciones(){
     return "1. See catalog.\n"
             + "2. Make a purchase.\n"
-            + "3. Sign off.\n" 
+            + "3. Log out.\n" 
             + "4. Exit." + '\n' + 
             "Please chose one of our options: ";
   }
@@ -144,7 +144,7 @@ public class Ingles implements Idioma{
    * */ 
   @Override
   public String seguirComprando() {
-    return "Wanna buy something else bro? (prees 1 to pay for those)" ;
+    return "Wanna buy something else bro? (press 1 to pay for those)" ;
   }
 
   /*  Metodo que advierte que el codigo es incorrecto
